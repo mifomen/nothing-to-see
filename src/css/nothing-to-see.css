@@ -1,0 +1,411 @@
+.fixed {
+   width: 100%;
+   position: fixed;
+   top: 0;
+   z-index: 5;
+
+}
+.above {
+    background-color: rgba(255,255,255, 1);
+}
+
+body {
+background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
+  padding:0;
+  margin:0;
+  height: 2000px;
+  position: relative;
+}
+.low-eyes-panel {
+  /*изменить потом*/
+  position: relative;
+  top:1px;
+    /*изменить потом*/
+  display: none;
+  justify-content: center;
+  /*width: 80%; */
+  /*width: 70%;*/
+  margin-right: auto;
+  margin-left: auto;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 18px; 
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  background: linear-gradient(to bottom, rgba(253, 253, 253, 0.2) 0%,rgba(240, 244, 242, 0.2) 50%,rgba(249, 254, 248, 0.2) 100%);
+
+}
+.flex-colum {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left:2px;
+  margin-right: 2px;
+  border:2px solid black;
+  padding-left:5px;
+  padding-right: 5px;
+  height: 65px;
+}
+.vertical-img  {
+  justify-content: center;
+}
+.flex-img {
+  display: flex;
+  justify-content: center;
+
+}
+.SecondLevel {
+  display: flex;
+}
+.SecondLevel__img { /*mifomen*/
+  border:2px solid ;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 1px solid darkorange;
+  border-radius: 50%;
+  background-color: rgba(255,162,123,0.5);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-left:1px;
+  margin-right: 1px;
+
+}
+.SecondLevel__img:hover {
+  background-color: rgba(255,162,123,1);
+  border: 1px solid darkorange;
+}
+
+.slider-with-js {
+  position: relative;
+  z-index: -10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(233, 241, 216,0.5);
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border:2px solid green;
+}
+.slider-with-js img{
+  border-radius: 25px;
+      display: block;
+}
+@media (max-width: 1024px) {
+  .slide img,
+  .slide2 img {
+    width: 250px;
+    height: 166px;
+    display: block;
+
+  }
+}
+
+#slides, 
+#slides2 {
+  font-size: 32px;
+  position: relative;
+
+  width: 400px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide, 
+.slide2 {
+  /*width: 300px;
+  height: 150px;
+  color: #fff;
+  box-shadow: (1px, 2px, 2px, 2px, #000);*/
+  position: absolute;
+  opacity: 0;
+  transition: ease 1500ms; 
+}
+.first {
+   opacity: 1;
+}
+.picture {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.panel-before,
+.panel-after {
+  height: 16px;
+
+}
+.panel {
+  
+ /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;*/
+background: linear-gradient(to bottom, rgba(0,162,0, 0.4) 20%, rgba(0,162,0, 0.7) 40%,rgba(0,162,0, 0.7) 60%,  rgba(0,162,0,0.4) 100%);
+ border-top:2px solid green;
+ border-bottom:2px solid green;
+ height: 25px;
+ display: flex;
+ align-items: center;
+ flex-wrap: wrap;
+ width: 100%;
+
+
+}
+.active-low-eyes {
+  font-weight: bold;
+  position: relative;
+  font-size: 28px;
+  text-decoration: none;
+  color: #000;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom:5px;
+  border:2px solid green;
+  border-radius: 25px;
+  left: 5%;
+  background-color: #fff;
+
+}
+
+
+.active-low-eyes:hover {
+  text-decoration: underline;
+}
+
+.font-size {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2px;
+  padding-left:20px;
+  padding-right:20px;
+
+}
+.font-size a {
+  width: 60px;
+  height:60px;
+  border:1px solid #000;
+  text-align: center;
+}/*
+.s32px {
+  font-size: 40px;
+  background-image: none;
+  
+}
+.s24px {
+  font-size: 30px;
+}
+.s14px {
+  font-size: 20px;
+}*/
+
+/*
+.color-scheme {
+  display: flex;
+  text-align: center;
+  border:2px solid;
+
+}
+.color-scheme  a {
+  width: 80px;
+  height: 50px
+display: inline-block;
+font-size: 52px;
+
+}*/
+.grey {
+  background-color: grey;
+  color: white;
+     filter: grayscale(100%);
+}
+.BandW {
+  background-color: black;
+  color: #fff;
+}
+.Blue {
+  background-color: rgba(0,0,255,0.4);
+}
+.open-panel {
+  opacity: 1;
+  display: flex;
+}
+.showing {
+  opacity: 1;
+}
+.intro {
+  position: relative;
+  border:2px solid green;
+  width: 100px;
+  height: 100px;
+  background-color: darkorange;
+}
+.menu {
+   transition: 300ms ease;
+  position: absolute;
+  left:30px;
+  top: 30px;
+  display: block;
+  width: 40px;
+  height: 7px;
+  font-size:0;
+  border:none;
+  outline: none;
+ box-sizing: border-box;
+  background-color: #fff;
+/* box-shadow: 0px 20px 0 #fff,
+ 0px -20px 0 #fff;*/
+}
+.menu:before,
+.menu:after {
+display: ;
+  content: "";
+  position:absolute;
+transition: 300ms ease;
+  left: 0px;
+  width: 40px;
+  z-index: 3;
+  height:7px;
+  background-color: #fff;
+
+
+}
+.menu:before {
+    top: -12px;
+}
+.menu:after {
+  top: 12px;
+ 
+}
+.intro {
+  border:20px solid green;
+}
+.menu-open {
+  background-color: transparent;
+  transition: 300ms ease;
+}
+.menu-open::after {
+transform: translateY(-12px) rotate(-45deg);
+transition: 300ms ease;
+}
+.menu-open::before {
+transform: translateY(12px) rotate(45deg);
+transition: 300ms ease;
+}
+.reset {
+
+  background-image: url('http://54school.ru/_mod_files/ce_images/loweyes/w_normal.png');
+  background-repeat: no-repeat;
+  width: 33px;
+  height: 33px;
+}
+.LowFontSize,
+.MiddleFontSize,
+.LargeFontSize,
+.Arial-bg,
+.TimesNewRoman-bg,
+.letter-spacing-default,
+.letter-spacing-middle,
+.letter-spacing-large,
+.line-height-default,
+.line-height-middle,
+.line-height-large,
+.BlackAndWhite-bg,
+.WhiteAndBlack-bg,
+.DarkBlue-bg,
+.FullColorImages,
+.GreyScaleImages,
+.DisableImages {
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  background-position: 50% 50%;
+}
+.LowFontSize {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f1.png);
+  font-size: 12px;
+}
+.MiddleFontSize {
+    background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f2.png);
+    font-size: 16px;
+}
+.LargeFontSize {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f3.png);
+  font-size: 48px;
+}
+.Arial-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn1.png);
+}
+.TimesNewRoman-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn2.png);
+}
+.letter-spacing-default {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k1.png);
+}
+.letter-spacing-middle {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k2.png);
+}
+.letter-spacing-large {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k3.png);
+}
+.line-height-default {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h1.png);
+}
+.line-height-middle {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h2.png);
+}
+.line-height-large {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h3.png);
+}
+.BlackAndWhite-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a1.png);
+}
+.WhiteAndBlack-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a2.png);
+background-color: rgba(123,123,123,0.5);
+}
+.WhiteAndBlack-bg:hover{
+  background-color: rgba(240,240,240,1);
+}
+.DarkBlue-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a3.png);
+}
+.DarkBlue-bg:hover{
+  background-color: #a0a0a0;
+}
+.FullColorImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c1.png);
+}
+.GreyScaleImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c2.png);
+}
+.DisableImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c3.png);
+}
+.Low-Font-Size {
+  font-size: 14px;
+}
+.Middle-Font-Size {
+  font-size: 18px;
+}
+.Large-Font-Size {
+  font-size: 72px;
+}
+.Arial {
+ font-family: Arial, sans-serif;
+}
+.TimesNewRoman {
+ font-family: 'Times New Roman', sans-serif;
+}
+.BlackAndWhite {
+  color: black;
+  background-color: transparent;
+}
+.WhiteAndBlack {
+  color: white;
+  background-color: black;
+}
+.DarkBlue {
+  color: rgb(16, 47, 88);
+  background-color: rgba(200,200,200,0.5);
+}
+.grayscaleFilterFull {
+   filter: grayscale(100%);
+}
