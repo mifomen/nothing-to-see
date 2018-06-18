@@ -1,20 +1,22 @@
-//slider on js
-var slides = document.querySelectorAll('#slides .slide');
-var currentSlide = 0;
-var slideInterval = setInterval(nextSlide, 2000);
-function nextSlide() {
-    slides[currentSlide].className = slides[currentSlide].className.replace(' showing','');
-    currentSlide = (currentSlide+1)%slides.length;
-    slides[currentSlide].className += ' showing'; 
-}
-var slides2 = document.querySelectorAll('#slides2 .slide2');
-var currentSlide2 = 0;
-var slideInterval = setInterval(nextSlide2, 2000);
-function nextSlide2() {
-    slides2[currentSlide2].className = slides2[currentSlide2].className.replace(' showing','');
-    currentSlide2 = (currentSlide2+1)%slides.length;
-    slides2[currentSlide2].className += ' showing'; 
-}
+"use strict";
+
+// //slider on js
+// var slides = document.querySelectorAll('#slides .slide');
+// var currentSlide = 0;
+// var slideInterval = setInterval(nextSlide, 2000);
+// function nextSlide() {
+//     slides[currentSlide].className = slides[currentSlide].className.replace(' showing','');
+//     currentSlide = (currentSlide+1)%slides.length;
+//     slides[currentSlide].className += ' showing'; 
+// }
+// var slides2 = document.querySelectorAll('#slides2 .slide2');
+// var currentSlide2 = 0;
+// var slideInterval = setInterval(nextSlide2, 2000);
+// function nextSlide2() {
+//     slides2[currentSlide2].className = slides2[currentSlide2].className.replace(' showing','');
+//     currentSlide2 = (currentSlide2+1)%slides.length;
+//     slides2[currentSlide2].className += ' showing'; 
+// }
 // end of slider on js
 
 /*
@@ -43,6 +45,7 @@ var ShowDefaultSetting = function () {
 // var UserSettings = [];
 
 var compare = function(a1,a2) {
+    'use strict';
   var NumbersPropertiesThatMatchSuccessfully = 0;
   for (var i=0; i <a1.length; i++) {
     if (a1[i]===a2[i]) {
