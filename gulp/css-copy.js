@@ -16,9 +16,10 @@ gulp.task('css', function() {
   // .pipe(sass())
   .pipe(postcss([ 
     autoprefixer({ browsers: [
-  'last 10 versions', 
+  'last 15 versions', 
   'ie 11',
   'ie 10',
+  'ie 9',
   'Android >= 4.1', 
   'Safari >= 8',
   'iOS >= 8'

@@ -164,7 +164,7 @@ var FullLoad = function (arr) {
     LoadLine();
     LoadColorScheme();
     LoadStatusImages();
-    AddFix();
+    AddFixedPositionForPanel();
 //ActivePanel.innerHTML = 'Вернуться обратно';
   };
   return true;
@@ -178,11 +178,11 @@ var ActivePanel=document.querySelector(".active-low-eyes");
 
 
 var FindPanel = document.querySelector(".above");
-var AddFix = function() {
+var AddFixedPositionForPanel = function() {
 
   FindPanel.classList.add('fixed');
 };
-var RemoveFix = function() {
+var RemoveFixedPositionForPanel = function() {
 
   FindPanel.classList.remove('fixed');
 };
@@ -195,7 +195,7 @@ ActivePanel.addEventListener("click",function(evt) {
 if (ActivePanel.innerHTML== 'Версия для слабовидящих') {
           panel.classList.add('open-panel');
           body.style.fontSize='16px';
-          AddFix();
+          AddFixedPositionForPanel();
           ActivePanel.innerHTML = 'Вернуться обратно';
           localStorage["PanelStatusOpened"]=1;
           //console.log('панель открыта '+ localStorage["PanelStatusOpened"]);
@@ -203,13 +203,10 @@ if (ActivePanel.innerHTML== 'Версия для слабовидящих') {
 } else {
           ActivePanel.innerHTML = 'Версия для слабовидящих';
           localStorage["PanelStatusOpened"]=0;
-              reset();
+          reset();
           panel.classList.remove('open-panel');
-      RemoveFix();
-
-     
+          RemoveFixedPositionForPanel();
           ClearLocalStorage();
-
           //   body.className= localStorage['LowEyesStyle'];
 }
 return false;
@@ -233,6 +230,7 @@ var number = parseInt(element.style.fontSize);
     number -=4;
     element.style.fontSize=number +'px';}
      UserSettings[0] = element.style.fontSize;
+     // console.log(parseInt(element.style.fontSize) + ' ' + element.style.fontSize)
      localStorage["LocalProperty0"] = element.style.fontSize;
      localStorage["LocalProperty6"] =  element.style.fontSize;
     // SaveSettingForNextPages();
@@ -242,10 +240,10 @@ var number = parseInt(element.style.fontSize);
 var FontsDefault = function(element) {
   element.style.fontSize='16px';
     // UserSettings[0] = element.style.fontSize; ??
-     localStorage["LocalProperty0"] = element.style.fontSize;
-        localStorage["LocalProperty6"] =  element.style.fontSize;
+    localStorage["LocalProperty0"] = element.style.fontSize;
+    localStorage["LocalProperty6"] =  element.style.fontSize;
     // SaveSettingForNextPages();
-   return false;  
+    return false;  
 };
 
 var FontsIncrease = function (element) {
@@ -254,9 +252,9 @@ var FontsIncrease = function (element) {
 return element.style.fontSize='80px';} 
                         else { number +=4;
                         element.style.fontSize=number +'px';};
-                        console.log(element.style.fontSize);
+                        // console.log(element.style.fontSize);
  UserSettings[0] = element.style.fontSize;
-  console.log(element.style.fontSize);
+  // console.log(element.style.fontSize);
      localStorage["LocalProperty0"] = element.style.fontSize;
       localStorage["LocalProperty6"] =  element.style.fontSize;
     // SaveSettingForNextPages();
