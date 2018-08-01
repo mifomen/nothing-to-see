@@ -25,7 +25,7 @@ gulp.task("copy-js", function() {
 gulp.task("minjs", function() {
   gulp.src("src/js/nothing-to-see.js")
     .pipe(plumber())
-    .pipe(uglify())
+    // .pipe(uglify())
     // .pipe(rename('min.js'))
     .pipe(gulp.dest("build/js"));
 });

@@ -409,3 +409,7 @@ background-color: rgba(123,123,123,0.5);
 .grayscaleFilterFull {
    filter: grayscale(100%);
 }
+
+.test {
+font-size:  26px;
+}

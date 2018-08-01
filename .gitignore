@@ -2,3 +2,4 @@ node_modules
 build
 *.psd
 _mod_files
+package-lock.json

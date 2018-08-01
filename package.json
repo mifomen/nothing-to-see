@@ -6,17 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
-    "start": "npm run build && gulp serve",
+    "start": "gulp build && gulp serve",
     "less": "gulp less"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mifomen/switch.git"
+    "url": "git+https://github.com/mifomen/nothing-to-see.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mifomen/switch/issues"
+    "url": "https://github.com/mifomen/nothing-to-see/issues"
   },
   "config": {
     "src": {
@@ -29,7 +29,7 @@
       "css-copy": "src/css"
     }
   },
-  "homepage": "https://github.com/mifomen/cakes#readme",
+  "homepage": "https://github.com/mifomen/nothing-to-see#readme",
   "devDependencies": {
     "autoprefixer": "^8.2.0",
     "browser-sync": "^2.23.6",
