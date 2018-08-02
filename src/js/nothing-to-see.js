@@ -43,17 +43,17 @@ var ShowDefaultSetting = function () {
 // ShowDefaultSetting();
 // var UserSettings = [];
 
-var compare = function(a1,a2) {
-    'use strict';
-  var NumbersPropertiesThatMatchSuccessfully = 0;
-  for (var i=0; i <a1.length; i++) {
-    if (a1[i]===a2[i]) {
-      NumbersPropertiesThatMatchSuccessfully++;
-  }
-}
-    if (NumbersPropertiesThatMatchSuccessfully===6) return true;
-    return false;
-};
+// var compare = function(a1,a2) {
+//     'use strict';
+//   var NumbersPropertiesThatMatchSuccessfully = 0;
+//   for (var i=0; i <a1.length; i++) {
+//     if (a1[i]===a2[i]) {
+//       NumbersPropertiesThatMatchSuccessfully++;
+//   }
+// }
+//     if (NumbersPropertiesThatMatchSuccessfully===6) return true;
+//     return false;
+// };
 
 // var SaveSettingForNextPages = function() {
 //  if (compare(DefaultSettings,UserSettings)) {
@@ -104,7 +104,9 @@ var ClearLocalStorage = function () {
 var body=document.querySelector(".main-body");
 
 var LoadFont = function () {
-  body.style.fontSize =  localStorage["LocalProperty0"];
+  // body.style.fontSize =  localStorage["LocalProperty0"];
+  SetFontSizeForTag('.main-body *',parseInt(localStorage["LocalProperty0"]));
+  // UserSettings[0] = localStorage["LocalProperty0"];
 };
 
 var LoadFontFamily = function () {
@@ -196,6 +198,9 @@ if (ActivePanel.innerHTML== 'Версия для слабовидящих') {
           AddFixedPositionForPanel();
           ActivePanel.innerHTML = 'Вернуться обратно';
           localStorage["PanelStatusOpened"]=1;
+          // if (localStorage["PanelStatusOpened"]=1) {
+            // проверку, загружать локалку если вкладка открыта
+          // }
           //console.log('панель открыта '+ localStorage["PanelStatusOpened"]);
 
 } else {
@@ -237,36 +242,29 @@ var SetFontSizeToLarge = function () {
 
  
 var FontsDefault = function() {
-  console.log('mifomen')
-  // SetFontSizeForTag('main-body *',"")
- // replace(' showing','');
- // console.log(f)
-  var FindAllTags = document.querySelectorAll('main-body *'); //.main-body *
+  var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
   let TimeMassive = [];
   TimeMassive = Array.from (FindAllTags);
-   
-    // console.log(f)
-  TimeMassive.forEach(function (it,f) {
-     var f = 'font-size: ' + UserSettings[0] + ';' ;
-      console.log('f= ' + f)
-     it.style.cssText = it.style.cssText.replace(f,'');;
-return true;
+  TimeMassive.forEach(function (it) {
+
+    return it.style.cssText = it.style.cssText.replace('font-size: ' + localStorage["LocalProperty0"],'');
     // it.style.cssText.replace(f,'');
   })
-    localStorage["LocalProperty0"] = "";
-    localStorage["LocalProperty6"] = "";
+    localStorage["LocalProperty0"] = "16px";
+    localStorage["LocalProperty6"] = "16px";
+    UserSettings[0] = "16px";
     // SaveSettingForNextPages();
     return true;  
 };
 
-var m = document.querySelector('.test');
-// console.log(m.style.cssText)
-var del = function () {
-// return m.style.cssText.replace('font-size:','');
-// return m.style.cssText="";
-var f = 'font-size: 55px';
-return m.style.cssText = m.style.cssText.replace(f,'');
-}
+// var m = document.querySelector('.test');
+// // console.log(m.style.cssText)
+// var del = function () {
+// // return m.style.cssText.replace('font-size:','');
+// // return m.style.cssText="";
+// var f = 'font-size: 55px';
+// return m.style.cssText = m.style.cssText.replace(f,'');
+// }
 
 // var AllDivsOnPage = document.getElementsByTagName('div');
 // var MassiveAllDivsOnPage = [];
@@ -551,6 +549,7 @@ function reset() {
     body.className='main-body';
     DeleteGreyColorForImages();
     ShowImage();
+    FontsDefault();
   //  console.log('reset complite');
  };
 
