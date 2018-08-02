@@ -18,3 +18,19 @@ gulp.task("build", function(evt) {
     evt
   );
 });
+
+gulp.task("publish", function(evt) {
+  run(
+    "full-clean",
+    // "copy",
+    // "retype-images",
+    // "retype-fonts",
+    "html",
+    "css",
+    // "sass",
+    "minjs",
+    // "images",
+    // "symbols",
+    evt
+  );
+});

@@ -4,7 +4,7 @@ var htmlminify = require("gulp-html-minify");
 
 gulp.task("html", function() {
   return gulp.src("src/**/*.html")
-  // .pipe(htmlminify())
+  .pipe(htmlminify())
   .pipe(gulp.dest("./build"));
 });
 

@@ -3,6 +3,7 @@
    position: fixed;
    top: 0;
    z-index: 5;
+   background-color: red;
 
 }
 .above {
@@ -379,7 +380,7 @@ background-color: rgba(123,123,123,0.5);
 .DisableImages {
   background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c3.png);
 }
-.Low-Font-Size {
+/*.Low-Font-Size {
   font-size: 14px;
 }
 .Middle-Font-Size {
@@ -387,13 +388,13 @@ background-color: rgba(123,123,123,0.5);
 }
 .Large-Font-Size {
   font-size: 72px;
-}
-.Arial {
+}*/
+/*.Arial {
  font-family: Arial, sans-serif;
 }
 .TimesNewRoman {
  font-family: 'Times New Roman', sans-serif;
-}
+}*/
 .BlackAndWhite {
   color: black;
   background-color: transparent;

@@ -40,6 +40,7 @@ var ShowDefaultSetting = function () {
     console.log(i + ' свойство ' + DefaultSettings[i]);
   }
 }
+
 // ShowDefaultSetting();
 // var UserSettings = [];
 
@@ -110,12 +111,12 @@ var LoadFont = function () {
 };
 
 var LoadFontFamily = function () {
-// body.className = body.className.replace(' TimesNewRoman','');
-// body.className = body.className.replace(' Arial','');
-//   //     slides2[currentSlide2].className = slides2[currentSlide2].className.replace(' showing','');
-  body.classList.remove('TimesNewRoman');
-  body.classList.remove('Arial');
-  body.className =   body.className + ' ' + localStorage["LocalProperty1"];
+  if (localStorage["LocalProperty1"] == 'Times New Roman') {
+    SetFontFamilyForElements('.main-body *','Times New Roman');
+  }
+  if (localStorage["LocalProperty1"] == 'Arial') {
+    SetFontFamilyForElements('.main-body *','Arial');
+  }
 };
 
 var LoadLetter = function () {
@@ -123,8 +124,21 @@ var LoadLetter = function () {
 };
 
 var LoadLine = function () {
-  body.style.lineHeight = localStorage["LocalProperty3"];
+
+  // body.style.lineHeight = localStorage["LocalProperty3"];
+  if (localStorage["LocalProperty3"] == '2.8') {
+    SetLineHeightForElements('.main-body *','2.8')
+  }
+  if (localStorage["LocalProperty3"] == '1.7') {
+    SetLineHeightForElements('.main-body *','1.7');
+  }
+   if (localStorage["LocalProperty3"] == 'normal' || '') {
+      LineHeightDefault();
+  }
+
 };
+
+
 
 var LoadColorScheme = function () {
   if (localStorage["LocalProperty4"] == 'BlackAndWhite') {
@@ -165,7 +179,15 @@ var FullLoad = function (arr) {
     LoadLine();
     LoadColorScheme();
     LoadStatusImages();
-    AddFixedPositionForPanel();
+    // AddFixedPositionForPanel();
+
+    if (localStorage["PanelStatusOpened"]==0) {
+      RemoveFixedPositionForPanel();
+    }
+ if (localStorage["PanelStatusOpened"]==1) {
+      AddFixedPositionForPanel();
+    }
+
 //ActivePanel.innerHTML = 'Вернуться обратно';
   };
   return true;
@@ -243,7 +265,7 @@ var SetFontSizeToLarge = function () {
  
 var FontsDefault = function() {
   var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
-  let TimeMassive = [];
+  var TimeMassive = [];
   TimeMassive = Array.from (FindAllTags);
   TimeMassive.forEach(function (it) {
 
@@ -257,22 +279,9 @@ var FontsDefault = function() {
     return true;  
 };
 
-// var m = document.querySelector('.test');
-// // console.log(m.style.cssText)
-// var del = function () {
-// // return m.style.cssText.replace('font-size:','');
-// // return m.style.cssText="";
-// var f = 'font-size: 55px';
-// return m.style.cssText = m.style.cssText.replace(f,'');
-// }
-
-// var AllDivsOnPage = document.getElementsByTagName('div');
-// var MassiveAllDivsOnPage = [];
-// MassiveAllDivsOnPage = Array.from(AllDivsOnPage);
-
 var SetFontSizeForTag = function (tag,number) {
   var FindAllTags = document.querySelectorAll(tag); //.main-body *
-  let TimeMassive = [];
+  var TimeMassive = [];
   TimeMassive = Array.from (FindAllTags);
   TimeMassive.forEach(function (it) {
     return it.style.fontSize = number + 'px';
@@ -285,53 +294,74 @@ var SetFontSizeForTag = function (tag,number) {
     SetFontSizeForTag('.main-body *',80);
   } else {
    number +=4;
-
    SetFontSizeForTag('.main-body *',number);
  }
  UserSettings[0] = number + 'px';
  localStorage["LocalProperty0"] =  number + 'px';
  localStorage["LocalProperty6"] =  number + 'px'; 
-  // UserSettings[0] = element.style.fontSize;
-  // localStorage["LocalProperty0"] = element.style.fontSize;
-  // localStorage["LocalProperty6"] =  element.style.fontSize;
+
 }
 
- var FontsDeacrease = function (number) {
+var FontsDeacrease = function (number) {
   if (number<=4) {
     SetFontSizeForTag('.main-body *',4);
   } else {
    number -=2;
-
    SetFontSizeForTag('.main-body *',number);
  }
  UserSettings[0] = number + 'px';
  localStorage["LocalProperty0"] =  number + 'px';
  localStorage["LocalProperty6"] =  number + 'px'; 
-  // UserSettings[0] = element.style.fontSize;
-  // localStorage["LocalProperty0"] = element.style.fontSize;
-  // localStorage["LocalProperty6"] =  element.style.fontSize;
 }
 
+var SetFontFamilyForElements = function (tag,family) {
+  var FindAllTags = document.querySelectorAll(tag); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[1] = family;
+     return it.style.fontFamily   =  family + ",sans-serif";
+  })
+    return true;
+};
 
-// var FontsIncrease = function (element) {
-//   var number = parseInt(element.style.fontSize);
-//   if (number>75) {
-//     // SetFontSizeForTag('h1','80px')
-//     // SetFontSizeForTag('a',48)
-//     // SetFontSizeForTag('div',48)
-//     // SetFontSizeForTag('h2',48)
-//     // SetFontSizeForTag('em',48)
-//     return element.style.fontSize='80px';} 
-//     else { number +=4;
-//       element.style.fontSize=number +'px';
-//     };
-//                         // console.log(element.style.fontSize);
-//                         UserSettings[0] = element.style.fontSize;
-//   // console.log(element.style.fontSize);
-//   localStorage["LocalProperty0"] = element.style.fontSize;
-//   localStorage["LocalProperty6"] =  element.style.fontSize;
-//     // SaveSettingForNextPages();
-//   };
+var FontsFamilyDefault = function() {
+  var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[1] = "";
+    return it.style.fontFamily  =  "";
+  })
+    localStorage["LocalProperty1"] = "";
+    UserSettings[1] = "";
+    return true;  
+};
+// line-height normal 1,7 2.8  style.lineHeight
+
+var SetLineHeightForElements = function (tag,multiplier) {
+  var FindAllTags = document.querySelectorAll(tag); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[3] = multiplier;
+     return it.style.lineHeight =  multiplier;
+  })
+    return true;
+};
+
+var LineHeightDefault = function() {
+  var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[3] = "";
+    return it.style.lineHeight  =  '';
+  })
+    localStorage["LocalProperty3"] = "";
+    UserSettings[3] = "";
+    return true;  
+};
 
 var BtnLowFontSize = document.querySelector (".LowFontSize");
 var BtnMIddleFontSize = document.querySelector (".MiddleFontSize");
@@ -357,19 +387,22 @@ var Arial=document.querySelector(".Arial");
 var TimesNewRoman= document.querySelector(".TimesNewRoman");
 Arial.addEventListener("click",function(evt) {
   evt.preventDefault();
-  body.classList.add('Arial');
-  body.classList.remove('TimesNewRoman');
-  UserSettings[1] = 'Arial';
+  // SetFontFamilyForElements('.main-body *','Times New Roman');
+SetFontFamilyForElements('.main-body *','Arial');
+  // body.classList.add('Arial');
+  // body.classList.remove('TimesNewRoman');
+  // UserSettings[1] = 'Arial';
        localStorage["LocalProperty1"] = 'Arial'
     // SaveSettingForNextPages();
 
 });
 TimesNewRoman.addEventListener("click",function(evt) {
   evt.preventDefault();
-  body.classList.add('TimesNewRoman');
-  body.classList.remove('Arial');
-  UserSettings[1] = 'Times New Roman';
-       localStorage["LocalProperty1"] = 'Times New Roman'
+    SetFontFamilyForElements('.main-body *','Times New Roman');
+  // body.classList.add('TimesNewRoman');
+  // body.classList.remove('Arial');
+  // UserSettings[1] = 'Times New Roman';
+       localStorage["LocalProperty1"] = 'Times New Roman';
     // SaveSettingForNextPages();
 });
 var LetterDefault = document.querySelector(".letter-spacing-default");
@@ -401,21 +434,25 @@ var LIneMiddle = document.querySelector(".line-height-middle");
 var LIneLarge = document.querySelector(".line-height-large");
 LineDefault.addEventListener("click",function(evt) {
   evt.preventDefault();
-  body.style.lineHeight = "normal";
-  UserSettings[3] = 'normal';
-       localStorage["LocalProperty3"] = 'normal'
+  // body.style.lineHeight = "normal";
+  LineHeightDefault();
+  // SetLineHeightForElements('.main-body *','')
+  // UserSettings[3] = '';
+  //      localStorage["LocalProperty3"] = ''
     // SaveSettingForNextPages();
 });
 LIneMiddle.addEventListener("click",function(evt) {
   evt.preventDefault();
-   body.style.lineHeight = "1.7";
+   // body.style.lineHeight = "1.7";
+   SetLineHeightForElements('.main-body *','1.7')
     UserSettings[3] = '1.7';
        localStorage["LocalProperty3"] = '1.7'
     // SaveSettingForNextPages();
 });
 LIneLarge.addEventListener("click",function(evt) {
   evt.preventDefault();
-  body.style.lineHeight = "2.8";
+  // body.style.lineHeight = "2.8";
+    SetLineHeightForElements('.main-body *','2.8')
    UserSettings[3] = '2.8';
        localStorage["LocalProperty3"] = '2.8'
     // SaveSettingForNextPages();
@@ -544,12 +581,15 @@ DisableImages.addEventListener("click",function(evt) {
 });
 function reset() {
     body.style.fontSize=('16px');
-    body.style.lineHeight=('normal');
+    // body.style.lineHeight=('normal');
     body.style.letterSpacing=('normal');
     body.className='main-body';
     DeleteGreyColorForImages();
     ShowImage();
     FontsDefault();
+    FontsFamilyDefault();
+    LineHeightDefault();
+    RemoveFixedPositionForPanel();
   //  console.log('reset complite');
  };
 
