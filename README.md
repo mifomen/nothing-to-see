@@ -42,10 +42,10 @@ document.querySelectorAll('.main-body *');
  background-image: url('');
 ```
 
-#Проблемы
+# Проблемы
 ## 1. <span style="color:red">Нет полноценной работы в IE11</span>
 ## 2. <span style="color:red">Съежает кнопка открытия панели в firefox</span>
 
-#Решения
+# Решения
 ## 1. <span style="color:green">Система еще развивается и дополняется...</span>
 ## 2. <span style="color:green">Буду рад полезному feedback'у</span>
