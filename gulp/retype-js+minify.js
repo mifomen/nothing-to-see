@@ -14,28 +14,28 @@ gulp.task('clear-js', function() {
 
 gulp.task("copy-js", function() {
   return gulp.src([
-    "src/js/**.js",
+    "src/**/*.js",
   ], {
     base: "src/"
   })
-  .pipe(gulp.dest("build/"));
+  .pipe(gulp.dest("./build"));
 });
 
 
 gulp.task("minjs", function() {
-  gulp.src("src/js/nothing-to-see.js")
+  gulp.src("src/**/nothing-to-see.js")
     .pipe(plumber())
     .pipe(uglify())
     // .pipe(rename('min.js'))
-    .pipe(gulp.dest("build/js"));
+    .pipe(gulp.dest("./build"));
 });
 
 gulp.task("retype-js", function(evt) {
   run(
-    // "clear-js",
-    // "copy-js",
+    "clear-js",
+    "copy-js",
 
-    "minjs",
+    // "minjs",
     evt
   );
 });

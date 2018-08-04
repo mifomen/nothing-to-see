@@ -3,3 +3,4 @@ build
 *.psd
 _mod_files
 package-lock.json
+.publish

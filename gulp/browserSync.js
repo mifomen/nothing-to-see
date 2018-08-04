@@ -16,8 +16,8 @@ gulp.task("serve", function() {
   // gulp.watch("sources/**/*.html", ["sass"]);
 
  // gulp.watch("sources/**/*.js", ["minjs"]).on("change", browserSync.reload);
-    gulp.watch("src/fonts/**", ["retype-fonts"]).on("change", browserSync.reload);
-   gulp.watch("src/img/*.{jpg,png,svg}", ["retype-images"]).on("change", browserSync.reload);
+    // gulp.watch("src/fonts/**", ["retype-fonts"]).on("change", browserSync.reload);
+   // gulp.watch("src/img/*.{jpg,png,svg}", ["retype-images"]).on("change", browserSync.reload);
      gulp.watch("src/**/*.js", ["retype-js"]).on("change", browserSync.reload);
   gulp.watch("src/*.html", ["html"]).on("change", browserSync.reload);
   gulp.watch("src/**/*.css", ["css"]).on('change', browserSync.reload);
