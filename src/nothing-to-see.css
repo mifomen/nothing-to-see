@@ -14,7 +14,7 @@ body {
 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
   padding:0;
   margin:0;
-  height: 2000px;
+  height: 9000px;
   position: relative;
 }
 .low-eyes-panel {
@@ -132,26 +132,25 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB
 }
 .panel-before,
 .panel-after {
-  height: 16px;
+  min-height: 18px;
+  height: 18px;
 
 }
 .panel {
-  
- /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;*/
 background: linear-gradient(to bottom, rgba(0,162,0, 0.4) 20%, rgba(0,162,0, 0.7) 40%,rgba(0,162,0, 0.7) 60%,  rgba(0,162,0,0.4) 100%);
  border-top:2px solid green;
  border-bottom:2px solid green;
- height: 25px;
+ min-height: 16px;
+ height: 22px;
  display: flex;
  align-items: center;
  flex-wrap: wrap;
  width: 100%;
-
-
+ position: relative;
 }
 .active-low-eyes {
   font-weight: bold;
-  position: relative;
+  position: absolute;
   font-size: 28px;
   text-decoration: none;
   color: #000;
@@ -161,7 +160,7 @@ background: linear-gradient(to bottom, rgba(0,162,0, 0.4) 20%, rgba(0,162,0, 0.7
   padding-bottom:5px;
   border:2px solid green;
   border-radius: 25px;
-  left: 5%;
+  left: 10%;
   background-color: #fff;
 
 }
