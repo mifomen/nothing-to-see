@@ -14,7 +14,7 @@ body {
 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
   padding:0;
   margin:0;
-  height: 9000px;
+ 
   position: relative;
 }
 .low-eyes-panel {
@@ -314,8 +314,8 @@ transition: 300ms ease;
 .DisableImages {
   background-repeat: no-repeat;
   border-radius: 50%;
-  width: 33px;
-  height: 33px;
+  width: 40px;
+  height: 40px;
   background-position: 50% 50%;
 }
 .LowFontSize {
