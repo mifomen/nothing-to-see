@@ -604,7 +604,7 @@ evt.preventDefault();
 
 
  document.addEventListener("DOMContentLoaded",function(e){
-  console.log('js works')
+  // console.log('js works')
   FullLoad(localStorage["PanelStatusOpened"]);
   OpenPanel();
 });

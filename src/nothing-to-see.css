@@ -254,7 +254,7 @@ font-size: 52px;
 }
 .menu:before,
 .menu:after {
-display: ;
+/*display: ;*/
   content: "";
   position:absolute;
 transition: 300ms ease;

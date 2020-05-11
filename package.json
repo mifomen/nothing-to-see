@@ -1,56 +1,51 @@
 {
   "name": "nothing-to-see",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.2.0",
+  "description": "none",
   "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "css-mqpacker": "^7.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cheerio": "^0.6.3",
+    "gulp-cli": "^2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-html2pug": "^1.2.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rm": "^1.0.5",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-svg-sprite": "^1.4.0",
+    "gulp-svgmin": "^2.0.0",
+    "gulp-uglify": "^3.0.1",
+    "gulp-uncss": "^1.0.6",
+    "html2pug": "^4.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
-    "start": "gulp build && gulp serve",
-    "pub": "gulp publish"
+    "test": "gulp build && gulp serve",
+    "start": "gulp build-final && gulp serve-final"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mifomen/nothing-to-see.git"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mifomen/nothing-to-see/issues"
   },
-  "config": {
-    "src": {
-      "sass": "src/scss"
-    },
-    "build": {
-      "css": "build/css"
-    },
-    "css": {
-      "css-copy": "src/css"
-    }
-  },
-  "homepage": "https://github.com/mifomen/nothing-to-see#readme",
-  "devDependencies": {
-    "autoprefixer": "^8.2.0",
-    "browser-sync": "^2.23.6",
-    "css-mqpacker": "^6.0.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-cli": "^2.0.1",
-    "gulp-csso": "^3.0.1",
-    "gulp-eslint": "^4.0.2",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-html-minify": "0.0.14",
-    "gulp-plumber": "^1.2.0",
-    "gulp-postcss": "^7.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0",
-    "require-dir": "^1.0.0",
-    "run-sequence": "^2.2.1"
-  },
-  "dependencies": {
-    "core-js": "^2.5.7",
-    "npm": "^6.14.5"
-  }
+  "homepage": "https://github.com/mifomen/nothing-to-see#readme"
 }
