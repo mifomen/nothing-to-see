@@ -1,20 +1,8 @@
 var gulp=require('gulp');
 var browserSync = require('browser-sync').create(); 
 var run = require("run-sequence");
-
-
 var clean = require('gulp-clean');
- 
-gulp.task('full-clean', function () {
-    return gulp.src('build', {read: false})
-        .pipe(clean());
-});
-
-
-
-
-// var run = require("run-sequence");
-var cfg = require('../package.json').config;
+// var cfg = require('../package.json').config;
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer"); 
 var minify = require("gulp-csso"); 
@@ -22,24 +10,39 @@ var mqpacker = require("css-mqpacker");
 var browserSync = require('browser-sync').create(); 
 var csso = require('gulp-csso');
 var plumber = require('gulp-plumber');
+var htmlminify = require("gulp-html-minify");
+var uglify = require("gulp-uglify");
+var rename = require("gulp-rename");
+var del = require("del");
+var eslint = require('gulp-eslint');
+
+gulp.task('full-clean', function () {
+  return gulp.src('build', {read: false})
+  .pipe(clean());
+});
+
+
+
+
+
 
 gulp.task('css-min', function() {
 
-    return gulp.src('src/**/nothing-to-see.css')
+  return gulp.src('src/**/nothing-to-see.css')
   .pipe(plumber())
 
   .pipe(postcss([ 
     autoprefixer({ browsers: [
-  'last 10 versions', 
-  'ie 11',
-  'ie 10',
-  'ie 9',
-  'Android >= 4.1', 
-  'Safari >= 8',
-  'iOS >= 8'
-  ] }),     
-  mqpacker({ sort: true })
-]))
+      'last 10 versions', 
+      'ie 11',
+      'ie 10',
+      'ie 9',
+      'Android >= 4.1', 
+      'Safari >= 8',
+      'iOS >= 8'
+      ] }),     
+    mqpacker({ sort: true })
+    ]))
   .pipe(csso())
 
   .pipe(gulp.dest("./build"))
@@ -48,27 +51,27 @@ gulp.task('css-min', function() {
 
 gulp.task('css', function() {
 
-    return gulp.src('src/**/nothing-to-see.css')
+  return gulp.src('src/**/nothing-to-see.css')
   .pipe(plumber())
 
   .pipe(postcss([ 
     autoprefixer({ browsers: [
-  'last 15 versions', 
-  'ie 11',
-  'ie 10',
-  'ie 9',
-  'Android >= 4.1', 
-  'Safari >= 8',
-  'iOS >= 8'
-  ] }),     
-  mqpacker({ sort: true })
-]))
+      'last 15 versions', 
+      'ie 11',
+      'ie 10',
+      'ie 9',
+      'Android >= 4.1', 
+      'Safari >= 8',
+      'iOS >= 8'
+      ] }),     
+    mqpacker({ sort: true })
+    ]))
   .pipe(gulp.dest("./build"))
   .pipe(browserSync.stream());
 });
 
 
-var htmlminify = require("gulp-html-minify");
+
 
 gulp.task("html", function() {
   return gulp.src("src/**/*.html")
@@ -83,36 +86,28 @@ gulp.task("html-min", function() {
 });
 
 
-var uglify = require("gulp-uglify");
-var rename = require("gulp-rename");
-var plumber = require('gulp-plumber');
-
-var del = require("del");
-var run = require("run-sequence");
-
-var eslint = require('gulp-eslint');
 
 gulp.task('clear-js', function() {
  return del(['build/js/**'])
-  });
+});
 
 gulp.task("copy-js", function() {
   return gulp.src([
     "src/**/*.js",
-  ], {
-    base: "src/"
-  })
+    ], {
+      base: "src/"
+    })
   .pipe(gulp.dest("./build"));
 });
 
 
 gulp.task("minjs", function() {
   gulp.src("src/**/nothing-to-see.js")
-    .pipe(plumber())
-    .pipe(uglify())
+  .pipe(plumber())
+  .pipe(uglify())
     // .pipe(rename('min.js'))
     .pipe(gulp.dest("./build"));
-});
+  });
 
 gulp.task("retype-js", function(evt) {
   run(
@@ -121,25 +116,25 @@ gulp.task("retype-js", function(evt) {
 
     // "minjs",
     evt
-  );
+    );
 });
 
 gulp.task("eslint", function(evt) {
-gulp.src(['src/**/*.js','!node_modules/**'])
-    .pipe(eslint({
-        rules: {
-            'my-custom-rule': 1,
-            'strict': 2
-        },
-        globals: [
-            'jQuery',
-            '$'
-        ],
-        envs: [
-            'browser'
-        ]
-    }))
-    .pipe(eslint.formatEach('compact', process.stderr));
+  gulp.src(['src/**/*.js','!node_modules/**'])
+  .pipe(eslint({
+    rules: {
+      'my-custom-rule': 1,
+      'strict': 2
+    },
+    globals: [
+    'jQuery',
+    '$'
+    ],
+    envs: [
+    'browser'
+    ]
+  }))
+  .pipe(eslint.formatEach('compact', process.stderr));
 });
 
 gulp.task('lint', () => {
@@ -157,38 +152,38 @@ gulp.task('lint', () => {
         // To have the process exit with an error code (1) on
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
-});
- 
+      });
+
 gulp.task('default', ['lint'], function () {
     // This will only run if the lint task is successful...
-gulp.src(['src/**/*.js','!node_modules/**'])
+    gulp.src(['src/**/*.js','!node_modules/**'])
     .pipe(eslint({
-        rules: {
-            'my-custom-rule': 1,
-            'strict': 2
-        },
-        globals: [
-            'jQuery',
-            '$'
-        ],
-        envs: [
-            'browser'
-        ]
+      rules: {
+        'my-custom-rule': 1,
+        'strict': 2
+      },
+      globals: [
+      'jQuery',
+      '$'
+      ],
+      envs: [
+      'browser'
+      ]
     }))
     .pipe(eslint.formatEach('compact', process.stderr));
-});
+  });
 
 
 var ghPages = require('gulp-gh-pages');
- 
+
 gulp.task('deploy', function() {
   return gulp.src('build/**/*')
-    .pipe(ghPages());
+  .pipe(ghPages());
 });
 
 
 
-// var run = require("run-sequence");
+
 
 gulp.task("copy", function() {
   return gulp.src([
@@ -196,9 +191,9 @@ gulp.task("copy", function() {
     "src/img/**"
     // "src/js/**",
     // "src/*.html"
-  ], {
-    base: "src/"
-  })
+    ], {
+      base: "src/"
+    })
   .pipe(gulp.dest("build"));
 });
 
@@ -218,8 +213,8 @@ gulp.task("serve", function() {
 
 
 
-var cfg = require('../package.json').config;
-var run = require("run-sequence");
+
+
 // var less = require('gulp-less');
 
 gulp.task("build", function(evt) {
@@ -235,7 +230,7 @@ gulp.task("build", function(evt) {
     // "images",
     // "symbols",
     evt
-  );
+    );
 });
 
 gulp.task("publish", function(evt) {
@@ -251,5 +246,5 @@ gulp.task("publish", function(evt) {
     // "images",
     // "symbols",
     evt
-  );
+    );
 });
