@@ -2,31 +2,44 @@
 console.log("js work")
 
 
-var body = document.querySelector('body');
-body.classList.add("main-body")
+document.body.classList.add("main-body")
 
 var lowEyesPanel = document.querySelector('#js-low-eyes');
-var docFregment = document.createDocumentFragment();
-var element = lowEyesPanel.content.cloneNode(true);
-    docFregment.appendChild(element);
-console.log(docFregment)
 
-// var element = document.createElement('div');
-// element = lowEyesPanel.cloneNode(true);
-// element.innerHTML = lowEyesPanel.innerHTML;
-// // element.classList.add('above')
-// console.log('element=' + element.innerHTML)
-
-
+var element = document.createElement('div');
+element.id="forInsert";
 var target = document.querySelector("head");
-target.parentNode.insertBefore(docFregment, target.nextSibling);
+target.parentNode.insertBefore(element, target.nextSibling);
+
+// element.classList.add('above');
+// element.classList.add('ab2ove');
+// element.id="js-low-eyes"
+// element.style.cssText="display: none;";
+
+var forInsert = document.querySelector('#forInsert');
+
+forInsert.innerHTML = lowEyesPanel.innerHTML;
 
 
-var btnstart = document.querySelector('.js-loweyes');
-btnstart.addEventListener('click', function (evt) {
-  evt.preventDefault();
-  console.log('click')
-})
+// console.log('forInsert=' + forInsert);
+// var frag = document.createDocumentFragment();
+// frag.appendChild(lowEyesPanel.content.cloneNode('true'));
+// forInsert.appendChild(frag)
+
+// forInsert.innerHTML = lowEyesPanel.innerHTML;
+// console.log(forInsert.innerHTML)
+// target.appendChild(frag);
+
+
+// var m = document.querySelector('#js-low-eyes');
+// console.log(m.innerHTML)
+// document.body.insertAdjacentHTML("afterbegin",row.innerHTML)
+
+// var btnstart = document.querySelector('.js-loweyes');
+// btnstart.addEventListener('click', function (evt) {
+//   evt.preventDefault();
+//   console.log('click')
+// })
 
 // //slider on js
 // var slides = document.querySelectorAll('#slides .slide');
@@ -77,7 +90,7 @@ var ShowDefaultSetting = function () {
 //   var NumbersPropertiesThatMatchSuccessfully = 0;
 //   for (var i=0; i <a1.length; i++) {
 //     if (a1[i]===a2[i]) {
-//       NumbersPropertiesThatMatchSuccessfully++;
+//   NumbersPropertiesThatMatchSuccessfully++;
 //   }
 // }
 //     if (NumbersPropertiesThatMatchSuccessfully===6) return true;
@@ -90,9 +103,9 @@ var ShowDefaultSetting = function () {
 //  } else {
 //     var NameOfProperty = '';
 //       for (var i=0; i<UserSettings.length; i++) {
-//           NameOfProperty = "LocalProperty";
-//           NameOfProperty +=i;
-//           // console.log(NameOfProperty);
+//   NameOfProperty = "LocalProperty";
+//  NameOfProperty +=i;
+// // console.log(NameOfProperty);
 //           localStorage[NameOfProperty] = UserSettings[i];
 //           //console.log(localStorage[NameOfProperty]);
 //         };
