@@ -190,11 +190,11 @@ gulp.task("html", function () {
 gulp.task("script", function () {
   return (
     gulp
-      .src("src/nothing-to-see.js")
+      .src(["src/*.js"])
       .pipe(plumber())
       // .pipe(uglify())
       .pipe(babel())
-      .pipe(rename("nothing-to-see.js"))
+      // .pipe(rename("nothing-to-see.js"))
 
       .pipe(gulp.dest("./build"))
       .pipe(

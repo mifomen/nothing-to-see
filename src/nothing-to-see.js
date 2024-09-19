@@ -1,4 +1,35 @@
 "use strict";
+console.log("js work")
+
+
+
+var body = document.querySelector('body');
+body.classList.add("main-body")
+
+var lowEyesPanel = document.querySelector('#js-low-eyes');
+console.log(lowEyesPanel.innerHTML)
+// var docFregment = document.createDocumentFragment();
+// var element = lowEyesPanel.content.cloneNode(true);
+//     docFregment.appendChild(element);
+// console.log(lowEyesPanel)
+
+var element = document.createElement('div');
+element = lowEyesPanel.cloneNode(true);
+element.innerHTML = lowEyesPanel.innerHTML;
+// element.classList.add('above')
+console.log('element=' + element.innerHTML)
+
+
+var target = document.querySelector("head");
+target.parentNode.insertBefore(element, target.nextSibling);
+
+
+var btnstart = document.querySelector('.js-loweyes')
+
+btnstart.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  alert('click')
+})
 
 // //slider on js
 // var slides = document.querySelectorAll('#slides .slide');
@@ -7,7 +38,7 @@
 // function nextSlide() {
 //     slides[currentSlide].className = slides[currentSlide].className.replace(' showing','');
 //     currentSlide = (currentSlide+1)%slides.length;
-//     slides[currentSlide].className += ' showing'; 
+//     slides[currentSlide].className += ' showing';
 // }
 // var slides2 = document.querySelectorAll('#slides2 .slide2');
 // var currentSlide2 = 0;
@@ -15,7 +46,7 @@
 // function nextSlide2() {
 //     slides2[currentSlide2].className = slides2[currentSlide2].className.replace(' showing','');
 //     currentSlide2 = (currentSlide2+1)%slides.length;
-//     slides2[currentSlide2].className += ' showing'; 
+//     slides2[currentSlide2].className += ' showing';
 // }
 // end of slider on js
 
@@ -65,7 +96,7 @@ var ShowDefaultSetting = function () {
 //           NameOfProperty = "LocalProperty";
 //           NameOfProperty +=i;
 //           // console.log(NameOfProperty);
-//           localStorage[NameOfProperty] = UserSettings[i]; 
+//           localStorage[NameOfProperty] = UserSettings[i];
 //           //console.log(localStorage[NameOfProperty]);
 //         };
 //  }
@@ -197,18 +228,24 @@ var FullLoad = function (arr) {
 // localStorage["HowManyTimesClickOnButtonLowEyesPanel"]=0;
 var show=document.querySelector(".showing");
 var panel=document.querySelector(".low-eyes-panel");
-var ActivePanel=document.querySelector(".active-low-eyes");
-
+var ActivePanel = document.querySelector(".active-low-eyes");
 
 var FindPanel = document.querySelector(".above");
+
+
 var AddFixedPositionForPanel = function() {
-  FindPanel.classList.add('fixed');
-};
+  if (document.querySelector(".above")) {
+    document.querySelector(".above").classList.add('fixed');
+    };
+  }
+
 var RemoveFixedPositionForPanel = function() {
-
-  FindPanel.classList.remove('fixed');
+  if (document.querySelector(".above")) {
+    document.querySelector(".above").remove('fixed');
+  }
 };
 
+// ActivePanel
 ActivePanel.addEventListener("click",function(evt) {
   evt.preventDefault();
 // HowManyTimesClickOnButtonLowEyesPanel++;
@@ -259,10 +296,10 @@ var SetFontSizeToLarge = function () {
 //      localStorage["LocalProperty0"] = element.style.fontSize;
 //      localStorage["LocalProperty6"] =  element.style.fontSize;
 //     // SaveSettingForNextPages();
-//    return false;  
+//    return false;
 // };
 
- 
+
 var FontsDefault = function() {
   var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
   var TimeMassive = [];
@@ -276,7 +313,7 @@ var FontsDefault = function() {
     localStorage["LocalProperty6"] = "16px";
     UserSettings[0] = "16px";
     // SaveSettingForNextPages();
-    return true;  
+    return true;
 };
 
 var SetFontSizeForTag = function (tag,number) {
@@ -298,7 +335,7 @@ var SetFontSizeForTag = function (tag,number) {
  }
  UserSettings[0] = number + 'px';
  localStorage["LocalProperty0"] =  number + 'px';
- localStorage["LocalProperty6"] =  number + 'px'; 
+ localStorage["LocalProperty6"] =  number + 'px';
 
 }
 
@@ -311,7 +348,7 @@ var FontsDeacrease = function (number) {
  }
  UserSettings[0] = number + 'px';
  localStorage["LocalProperty0"] =  number + 'px';
- localStorage["LocalProperty6"] =  number + 'px'; 
+ localStorage["LocalProperty6"] =  number + 'px';
 }
 
 var SetFontFamilyForElements = function (tag,family) {
@@ -335,7 +372,7 @@ var FontsFamilyDefault = function() {
   })
     localStorage["LocalProperty1"] = "";
     UserSettings[1] = "";
-    return true;  
+    return true;
 };
 // line-height normal 1,7 2.8  style.lineHeight
 
@@ -360,7 +397,7 @@ var LineHeightDefault = function() {
   })
     localStorage["LocalProperty3"] = "";
     UserSettings[3] = "";
-    return true;  
+    return true;
 };
 
 var BtnLowFontSize = document.querySelector (".LowFontSize");
@@ -460,6 +497,7 @@ LIneLarge.addEventListener("click",function(evt) {
 var BlackAndWhite = document.querySelector(".BlackAndWhite");
 var WhiteAndBlack = document.querySelector(".WhiteAndBlack-bg");
 var SchemeGreyColor = document.querySelector(".DarkBlue");
+
 var ChangeColorShemeToBlackAndWhite = function() {
   var above = document.querySelector(".above");
 above.style.backgroundColor = '#FFF';
@@ -487,7 +525,7 @@ above.style.backgroundColor = '#000';
 WhiteAndBlack.addEventListener("click",function(evt) {
     evt.preventDefault();
     ChangeColorShemeToWhiteAndBlack();
-    UserSettings[4] = 'WhiteAndBlack'; 
+    UserSettings[4] = 'WhiteAndBlack';
        localStorage["LocalProperty4"] = 'WhiteAndBlack'
     // SaveSettingForNextPages();
 });
@@ -500,7 +538,7 @@ var ChangeColorShemeToSchemeGreyColor = function() {
 SchemeGreyColor.addEventListener("click",function(evt) {
     evt.preventDefault();
     ChangeColorShemeToSchemeGreyColor();
-    UserSettings[4] = 'SchemeGreyColor'; 
+    UserSettings[4] = 'SchemeGreyColor';
        localStorage["LocalProperty4"] = 'SchemeGreyColor'
     // SaveSettingForNextPages();
 });
@@ -526,7 +564,7 @@ var SVGimages = document.getElementsByTagName("svg");
 }
 var GreyColorForImages = function () {
       var images = document.getElementsByTagName("img");
-      for (var i = 0; i < images.length; i++) 
+      for (var i = 0; i < images.length; i++)
       images[i].classList.add('grayscaleFilterFull');
 var SVGimages = document.getElementsByTagName("svg");
       for (var i = 0; i < SVGimages.length; i++)
@@ -535,8 +573,8 @@ var SVGimages = document.getElementsByTagName("svg");
 }
 var DeleteGreyColorForImages = function () {
       var images = document.getElementsByTagName("img");
-      for (var i = 0; i < images.length; i++) 
-         images[i].classList.remove('grayscaleFilterFull');  
+      for (var i = 0; i < images.length; i++)
+         images[i].classList.remove('grayscaleFilterFull');
 var SVGimages = document.getElementsByTagName("svg");
       for (var i = 0; i < SVGimages.length; i++)
        SVGimages[i].classList.remove('grayscaleFilterFull');
@@ -550,7 +588,7 @@ var DisableImages = document.querySelector(".DisableImages");
 var ChangeStatusImageToFullColorImages = function () {
   ShowImage();
   DeleteGreyColorForImages();
-  UserSettings[5] = 'ShowImages'; 
+  UserSettings[5] = 'ShowImages';
        localStorage["LocalProperty5"] = 'ShowImages'
     // SaveSettingForNextPages();
 };
@@ -561,7 +599,7 @@ FullColorImages.addEventListener("click",function(evt) {
 var ChangeStatusImageToGreyScaleImagess =function () {
   GreyColorForImages();
   ShowImage();
-  UserSettings[5] = 'GreyColorImagesYes'; 
+  UserSettings[5] = 'GreyColorImagesYes';
        localStorage["LocalProperty5"] = 'GreyColorImagesYes'
     // SaveSettingForNextPages();
 };
@@ -571,7 +609,7 @@ GreyScaleImages.addEventListener("click",function(evt) {
 });
 var  ChangeStatusImageToDisableImages = function() {
   HideImage();
-  UserSettings[5] = 'HideImages'; 
+  UserSettings[5] = 'HideImages';
        localStorage["LocalProperty5"] = 'HideImages'
     // SaveSettingForNextPages();
 };
