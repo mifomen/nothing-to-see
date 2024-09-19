@@ -2,33 +2,30 @@
 console.log("js work")
 
 
-
 var body = document.querySelector('body');
 body.classList.add("main-body")
 
 var lowEyesPanel = document.querySelector('#js-low-eyes');
-console.log(lowEyesPanel.innerHTML)
-// var docFregment = document.createDocumentFragment();
-// var element = lowEyesPanel.content.cloneNode(true);
-//     docFregment.appendChild(element);
-// console.log(lowEyesPanel)
+var docFregment = document.createDocumentFragment();
+var element = lowEyesPanel.content.cloneNode(true);
+    docFregment.appendChild(element);
+console.log(docFregment)
 
-var element = document.createElement('div');
-element = lowEyesPanel.cloneNode(true);
-element.innerHTML = lowEyesPanel.innerHTML;
-// element.classList.add('above')
-console.log('element=' + element.innerHTML)
+// var element = document.createElement('div');
+// element = lowEyesPanel.cloneNode(true);
+// element.innerHTML = lowEyesPanel.innerHTML;
+// // element.classList.add('above')
+// console.log('element=' + element.innerHTML)
 
 
 var target = document.querySelector("head");
-target.parentNode.insertBefore(element, target.nextSibling);
+target.parentNode.insertBefore(docFregment, target.nextSibling);
 
 
-var btnstart = document.querySelector('.js-loweyes')
-
+var btnstart = document.querySelector('.js-loweyes');
 btnstart.addEventListener('click', function (evt) {
   evt.preventDefault();
-  alert('click')
+  console.log('click')
 })
 
 // //slider on js
