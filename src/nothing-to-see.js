@@ -18,8 +18,16 @@ target.parentNode.insertBefore(element, target.nextSibling);
 
 var forInsert = document.querySelector('#forInsert');
 
-forInsert.innerHTML = lowEyesPanel.innerHTML;
+function swap(t1,t2) {
+  t1.innerHTML = t2.innerHTML;
+  return true
+}
 
+// console.log(forInsert.innerHTML)
+swap(forInsert,lowEyesPanel);
+console.log(swap(forInsert,lowEyesPanel))
+// forInsert.innerHTML = lowEyesPanel.innerHTML;
+// console.log(forInsert.innerHTML)
 
 // console.log('forInsert=' + forInsert);
 // var frag = document.createDocumentFragment();
