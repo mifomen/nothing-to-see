@@ -4,50 +4,44 @@ console.log("js work")
 
 document.body.classList.add("main-body")
 
-var lowEyesPanel = document.querySelector('#js-low-eyes');
-
-var element = document.createElement('div');
-element.id="forInsert";
-var target = document.querySelector("head");
-target.parentNode.insertBefore(element, target.nextSibling);
-
-// element.classList.add('above');
-// element.classList.add('ab2ove');
-// element.id="js-low-eyes"
-// element.style.cssText="display: none;";
-
-var forInsert = document.querySelector('#forInsert');
-
-function swap(t1,t2) {
-  t1.innerHTML = t2.innerHTML;
-  return true
-}
-
-// console.log(forInsert.innerHTML)
-swap(forInsert,lowEyesPanel);
-console.log(swap(forInsert,lowEyesPanel))
-// forInsert.innerHTML = lowEyesPanel.innerHTML;
-// console.log(forInsert.innerHTML)
-
-// console.log('forInsert=' + forInsert);
-// var frag = document.createDocumentFragment();
-// frag.appendChild(lowEyesPanel.content.cloneNode('true'));
-// forInsert.appendChild(frag)
-
-// forInsert.innerHTML = lowEyesPanel.innerHTML;
-// console.log(forInsert.innerHTML)
-// target.appendChild(frag);
+// var templateLowEyes = document.querySelector('#template-low-eyes');
+var elem = document.createElement('div');
+elem.id="forInsert";
+elem.className="forInsert"
 
 
-// var m = document.querySelector('#js-low-eyes');
-// console.log(m.innerHTML)
-// document.body.insertAdjacentHTML("afterbegin",row.innerHTML)
+elem.append(tmpl.content.cloneNode(true));
+
+document.body.append(elem);
+
+// document.body.insertBefore(elem, document.body.firstChild);
+
+// var forInsert = document.querySelector('#forInsert');
+
+// // forInsert.innerHTML = templateLowEyes.innerHTML;
+// var fragment = document.createDocumentFragment();
+// // templateLowEyes.cloneNode(true)
+// var mama = templateLowEyes.content.cloneNode(true);
+// forInsert.append(mama)
+// console.log(fragment.innerHTML);
+// forInsert.innerHTML = fragment.innerHTML;
+// // console.log(fragment)
+
+// forInsert = fragment.content.cloneNode(true);
+// console.log(forInsert)
+// var b = lowEyesPanel.content.cloneNode(true);
+// console.log(fragment)
 
 // var btnstart = document.querySelector('.js-loweyes');
 // btnstart.addEventListener('click', function (evt) {
 //   evt.preventDefault();
 //   console.log('click')
 // })
+var btn123=  document.querySelector('.active-low-eyes');
+btn123.addEventListener('click', function (evt) {
+  evt.preventDefault();
+document.querySelector('.low-eyes-panel').classList.add('open-panel')
+})
 
 // //slider on js
 // var slides = document.querySelectorAll('#slides .slide');
