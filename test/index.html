@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../src/nothing-to-see.css">
+  <link rel="stylesheet" href="/nothing-to-see.css">
 </head>
 <body>
   <button class="js-loweyes">click</button>
@@ -203,6 +203,12 @@
     document.body.insertBefore(elem, document.body.firstChild);
     // document.body.append(elem);
     // Сейчас скрипт из <template> выполнится
+
+      var startBtn = document.querySelector('.js-loweyes')
+      startBtn.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel')
+      })
   </script>
 </body>
 </html>

@@ -1,27 +1,351 @@
 <!DOCTYPE html>
-<html lang="ru-RU, en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Document</title>
-    <link rel="stylesheet" href="nothing-to-see.css" />
-    <style>
-      #lay {
-        font-size: 24px;
-        background-color: red;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
 
-        width: 400px;
-        height: 400px;
-        border: 2px solid green;
-      }
-      /*#lay:hover {
- background-color: yellow;
- font-size: 48px;
-}*/
-    </style>
-  </head>
-  <body>
-   <button class="js-loweyes">click</button>
+    .hide {
+      display: none;
+    }
+    .fixed {
+   width: 100%;
+   position: fixed;
+   top: 0;
+   z-index: 100;
+   /* background-color: red; */
+
+}
+.above {
+    background-color: rgba(255,255,255, 1);
+}
+
+body {
+background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
+  padding:0;
+  margin:0;
+
+  position: relative;
+}
+.low-eyes-panel {
+
+  position: relative;
+  top: 1px;
+
+  display: none;
+  justify-content: center;
+
+
+  margin-right: auto;
+  margin-left: auto;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: linear-gradient(to bottom, rgba(253, 253, 253, 0.2) 0%,rgba(240, 244, 242, 0.2) 50%,rgba(249, 254, 248, 0.2) 100%);
+
+}
+.flex-colum {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left:2px;
+  margin-right: 2px;
+  border:2px solid black;
+  padding-left:5px;
+  padding-right: 5px;
+  height: 65px;
+}
+.vertical-img  {
+  justify-content: center;
+}
+.flex-img {
+  display: flex;
+  justify-content: center;
+
+}
+.SecondLevel {
+  display: flex;
+}
+.SecondLevel__img {
+  border:2px solid ;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 1px solid darkorange;
+  border-radius: 50%;
+  background-color: rgba(255,162,123,0.5);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-left:1px;
+  margin-right: 1px;
+
+}
+.SecondLevel__img:hover {
+  background-color: rgba(255,162,123,1);
+  border: 1px solid darkorange;
+}
+
+
+.first {
+   opacity: 1;
+}
+.picture {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.panel-before,
+.panel-after {
+  min-height: 18px;
+  height: 18px;
+
+}
+.panel {
+background: linear-gradient(to bottom, rgba(0,162,0, 0.4) 20%, rgba(0,162,0, 0.7) 40%,rgba(0,162,0, 0.7) 60%,  rgba(0,162,0,0.4) 100%);
+ border-top:2px solid green;
+ border-bottom:2px solid green;
+ min-height: 16px;
+ height: 22px;
+ display: flex;
+ align-items: center;
+ flex-wrap: wrap;
+ width: 100%;
+ position: relative;
+}
+.active-low-eyes {
+  font-weight: bold;
+  position: absolute;
+  font-size: 28px;
+  text-decoration: none;
+  color: #000;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom:5px;
+  border:2px solid green;
+  border-radius: 25px;
+  left: 10%;
+  background-color: #fff;
+
+}
+
+
+.active-low-eyes:hover {
+  text-decoration: underline;
+}
+
+.font-size {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2px;
+  padding-left:20px;
+  padding-right:20px;
+
+}
+.font-size a {
+  width: 60px;
+  height:60px;
+  border:1px solid #000;
+  text-align: center;
+}
+
+
+.grey {
+  background-color: grey;
+  color: white;
+     filter: grayscale(100%);
+}
+.BandW {
+  background-color: black;
+  color: #fff;
+}
+.Blue {
+  background-color: rgba(0,0,255,0.4);
+}
+.open-panel {
+  opacity: 1;
+  display: flex;
+}
+.showing {
+  opacity: 1;
+}
+.intro {
+  position: relative;
+  border:2px solid green;
+  width: 100px;
+  height: 100px;
+  background-color: darkorange;
+}
+.menu {
+   transition: 300ms ease;
+  position: absolute;
+  left:30px;
+  top: 30px;
+  display: block;
+  width: 40px;
+  height: 7px;
+  font-size:0;
+  border:none;
+  outline: none;
+ box-sizing: border-box;
+  background-color: #fff;
+
+}
+.menu:before,
+.menu:after {
+
+  content: "";
+  position:absolute;
+transition: 300ms ease;
+  left: 0px;
+  width: 40px;
+  z-index: 3;
+  height:7px;
+  background-color: #fff;
+
+
+}
+.menu:before {
+    top: -12px;
+}
+.menu:after {
+  top: 12px;
+
+}
+.intro {
+  border:20px solid green;
+}
+.menu-open {
+  background-color: transparent;
+  transition: 300ms ease;
+}
+.menu-open::after {
+transform: translateY(-12px) rotate(-45deg);
+transition: 300ms ease;
+}
+.menu-open::before {
+transform: translateY(12px) rotate(45deg);
+transition: 300ms ease;
+}
+.reset {
+
+  background-image: url('http://54school.ru/_mod_files/ce_images/loweyes/w_normal.png');
+  background-repeat: no-repeat;
+  width: 33px;
+  height: 33px;
+}
+.LowFontSize,
+.MiddleFontSize,
+.LargeFontSize,
+.Arial-bg,
+.TimesNewRoman-bg,
+.letter-spacing-default,
+.letter-spacing-middle,
+.letter-spacing-large,
+.line-height-default,
+.line-height-middle,
+.line-height-large,
+.BlackAndWhite-bg,
+.WhiteAndBlack-bg,
+.DarkBlue-bg,
+.FullColorImages,
+.GreyScaleImages,
+.DisableImages {
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-position: 50% 50%;
+}
+.LowFontSize {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f1.png);
+  font-size: 12px;
+}
+.MiddleFontSize {
+    background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f2.png);
+    font-size: 16px;
+}
+.LargeFontSize {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f3.png);
+  font-size: 48px;
+}
+.Arial-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn1.png);
+}
+.TimesNewRoman-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn2.png);
+}
+.letter-spacing-default {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k1.png);
+}
+.letter-spacing-middle {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k2.png);
+}
+.letter-spacing-large {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k3.png);
+}
+.line-height-default {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h1.png);
+}
+.line-height-middle {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h2.png);
+}
+.line-height-large {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h3.png);
+}
+.BlackAndWhite-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a1.png);
+}
+.WhiteAndBlack-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a2.png);
+background-color: rgba(123,123,123,0.5);
+}
+.WhiteAndBlack-bg:hover{
+  background-color: rgba(240,240,240,1);
+}
+.DarkBlue-bg {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a3.png);
+}
+.DarkBlue-bg:hover{
+  background-color: #a0a0a0;
+}
+.FullColorImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c1.png);
+}
+.GreyScaleImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c2.png);
+}
+.DisableImages {
+  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c3.png);
+}
+
+
+.BlackAndWhite {
+  color: black;
+  background-color: transparent;
+}
+.WhiteAndBlack {
+  color: white;
+  background-color: black;
+}
+.DarkBlue {
+  color: rgb(16, 47, 88);
+  background-color: rgba(200,200,200,0.5);
+}
+.grayscaleFilterFull {
+   filter: grayscale(100%);
+}
+
+.test {
+font-size:  26px;
+}
+
+  </style>
+</head>
+<body>
+  <button class="js-loweyes">click</button>
 
     <div class="asdasd">
       <h1>
@@ -68,144 +392,195 @@
 
       <div class="test" style="font-size: 55px">test</div>
     </div>
-    <!-- <div style="height: 1200px">height: 1200px;</div> -->
-
-
-
-    <template id="tmpl" class="">
-      <div class="above">
-        <div class="low-eyes-panel"
-          style="font-size: 16px;
-            line-height: 1;
-            letter-spacing: normal;
-            font-family: 'Times New Roman', sans-serif;">
-          <div class="flex-colum vertical-img">
-            <a class="reset" href="#"></a>
-          </div>
-          <div class="font-size-tools flex-colum">
-            <div>Размер шрифта</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="LowFontSize SecondLevel__img"
-                title="Мелкий шрифт"
-              ></button>
-              <button
-                type="button"
-                class="MiddleFontSize SecondLevel__img"
-                title="Средний шрифт"
-              ></button>
-              <button
-                type="button"
-                class="LargeFontSize SecondLevel__img"
-                title="Крупный шрифт"
-              ></button>
-            </div>
-          </div>
-          <div class="font-family-tools flex-colum">
-            <div>Шрифт</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="Arial-bg Arial SecondLevel__img"
-                title="Arial"
-              ></button>
-              <button
-                type="button"
-                class="TimesNewRoman-bg TimesNewRoman SecondLevel__img"
-                title="Times New Roman"
-              ></button>
-            </div>
-          </div>
-          <div class="letter-spacing-tools flex-colum">
-            <div>Межсимвольный интервал</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="letter-spacing-default SecondLevel__img"
-                title="Стандартный"
-              ></button>
-              <button
-                type="button"
-                class="letter-spacing-middle SecondLevel__img"
-                title="Средний"
-              ></button>
-              <button
-                type="button"
-                class="letter-spacing-large SecondLevel__img"
-                title="Большой"
-              ></button>
-            </div>
-          </div>
-          <div class="line-height-tools flex-colum">
-            <div>Межстрочный интервал</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="line-height-default SecondLevel__img"
-                title="Уменьшенный"
-              ></button>
-              <button
-                type="button"
-                class="line-height-middle SecondLevel__img"
-                title="Стандартный"
-              ></button>
-              <button
-                type="button"
-                class="line-height-large SecondLevel__img"
-                title="Увеличенный"
-              ></button>
-            </div>
-          </div>
-          <div class="color-scheme flex-colum">
-            <div>Цветовая схема</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="BlackAndWhite-bg BlackAndWhite SecondLevel__img"
-                title="Черным по белому"
-              ></button>
-              <button
-                type="button"
-                class="WhiteAndBlack-bg SecondLevel__img"
-                title="Белым по черному"
-              ></button>
-              <button
-                type="button"
-                class="DarkBlue-bg DarkBlue SecondLevel__img"
-                title="Темно-синим по голубому"
-              ></button>
-            </div>
-          </div>
-          <div class="color-scheme flex-colum">
-            <div>Изображения</div>
-            <div class="SecondLevel">
-              <button
-                type="button"
-                class="FullColorImages SecondLevel__img"
-                title="Цветные изображения"
-              ></button>
-              <button
-                type="button"
-                class="GreyScaleImages SecondLevel__img"
-                title="Черно-белые изображения"
-              ></button>
-              <button
-                type="button"
-                class="DisableImages SecondLevel__img"
-                title="Спрятать изображения"
-              ></button>
-            </div>
+  <div class="message">Привет, Мир2!</div>
+  <div class="message">Привет, Мир3!</div>
+  <div class="message">Привет, Мир4!</div>
+  <div class="message">Привет, Мир5!</div>
+  <div id="tmpl" style="display: none" class="hide">
+    <div class="above">
+      <div class="low-eyes-panel"
+        style="font-size: 16px;
+          line-height: 1;
+          letter-spacing: normal;
+          font-family: 'Times New Roman', sans-serif;">
+        <div class="flex-colum vertical-img">
+          <a class="reset" href="#"></a>
+        </div>
+        <div class="font-size-tools flex-colum">
+          <div>Размер шрифта</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="LowFontSize SecondLevel__img"
+              title="Мелкий шрифт"
+            ></button>
+            <button
+              type="button"
+              class="MiddleFontSize SecondLevel__img"
+              title="Средний шрифт"
+            ></button>
+            <button
+              type="button"
+              class="LargeFontSize SecondLevel__img"
+              title="Крупный шрифт"
+            ></button>
           </div>
         </div>
-         <div class="panel-before"></div>
-         <div class="panel">
-            <a class="active-low-eyes">Версия для слабовидящих</a>
-         </div>
-         <div class="panel-after"></div>
+        <div class="font-family-tools flex-colum">
+          <div>Шрифт</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="Arial-bg Arial SecondLevel__img"
+              title="Arial"
+            ></button>
+            <button
+              type="button"
+              class="TimesNewRoman-bg TimesNewRoman SecondLevel__img"
+              title="Times New Roman"
+            ></button>
+          </div>
+        </div>
+        <div class="letter-spacing-tools flex-colum">
+          <div>Межсимвольный интервал</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="letter-spacing-default SecondLevel__img"
+              title="Стандартный"
+            ></button>
+            <button
+              type="button"
+              class="letter-spacing-middle SecondLevel__img"
+              title="Средний"
+            ></button>
+            <button
+              type="button"
+              class="letter-spacing-large SecondLevel__img"
+              title="Большой"
+            ></button>
+          </div>
+        </div>
+        <div class="line-height-tools flex-colum">
+          <div>Межстрочный интервал</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="line-height-default SecondLevel__img"
+              title="Уменьшенный"
+            ></button>
+            <button
+              type="button"
+              class="line-height-middle SecondLevel__img"
+              title="Стандартный"
+            ></button>
+            <button
+              type="button"
+              class="line-height-large SecondLevel__img"
+              title="Увеличенный"
+            ></button>
+          </div>
+        </div>
+        <div class="color-scheme flex-colum">
+          <div>Цветовая схема</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="BlackAndWhite-bg BlackAndWhite SecondLevel__img"
+              title="Черным по белому"
+            ></button>
+            <button
+              type="button"
+              class="WhiteAndBlack-bg SecondLevel__img"
+              title="Белым по черному"
+            ></button>
+            <button
+              type="button"
+              class="DarkBlue-bg DarkBlue SecondLevel__img"
+              title="Темно-синим по голубому"
+            ></button>
+          </div>
+        </div>
+        <div class="color-scheme flex-colum">
+          <div>Изображения</div>
+          <div class="SecondLevel">
+            <button
+              type="button"
+              class="FullColorImages SecondLevel__img"
+              title="Цветные изображения"
+            ></button>
+            <button
+              type="button"
+              class="GreyScaleImages SecondLevel__img"
+              title="Черно-белые изображения"
+            ></button>
+            <button
+              type="button"
+              class="DisableImages SecondLevel__img"
+              title="Спрятать изображения"
+            ></button>
+          </div>
+        </div>
       </div>
-    </template>
+       <!-- <div class="panel-before"></div>
+       <div class="panel">
+          <a class="active-low-eyes">Версия для слабовидящих</a>
+       </div>
+       <div class="panel-after"></div> -->
+    </div>
+  </div>
 
-    <script src="nothing-to-see.js"></script>
-  </body>
+  <script type="text/javascript">
+
+var openPanel = function (evt) {
+        evt.preventDefault();
+        forInsert.style.cssText="";
+        forInsert.classList.remove('hide')
+        forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel');
+      }
+
+
+    var body = document.querySelector('ul.no-bullet.site-menu__list.clearfix');
+    var title = document.createElement('li');
+    title.classList.add("disable-sort");
+    title.classList.add("site-menu__item");
+    title.id="specialButton";
+
+
+      var title2 = document.createElement('a');
+      title2.id="glaz"
+      // title2.onclick = function() {
+      //   openPanel();
+      // }
+      title2.addEventListener('click', openPanel);
+      title2.textContent="Версия для слабовидящих";
+      title.appendChild(title2);
+      body.appendChild(title);  //prod
+      // document.body.insertBefore(title, document.body.firstChild); //test
+
+
+    var elem = document.createElement('div');
+    elem.id="forInsert";
+    elem.className="forInsert"
+
+    // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
+    //  elem.append(tmpl.content.cloneNode(true));
+    elem.innerHTML = tmpl.innerHTML;
+    document.body.insertBefore(elem, document.body.firstChild);
+    // document.body.append(elem);
+    // Сейчас скрипт из <template> выполнится
+
+      // var startBtn = document.querySelector('.js-loweyes');
+
+      function startInit() {
+        // forInsert.classList.add('hide');
+        // forInsert.classList.remove('hide');
+        console.log('init eyes')
+        // glaz.addEventListener('click',openPanel )
+      }
+    document.addEventListener('DOMContentLoaded', startInit);
+
+
+  </script>
+</body>
 </html>
