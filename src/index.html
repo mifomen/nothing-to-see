@@ -341,9 +341,9 @@ background-color: rgba(123,123,123,0.5);
    filter: grayscale(100%);
 }
 
-.test {
-font-size:  26px;
-}
+/* body *:not(nth-child(1)) {
+  font-size:  148px;
+} */
 
   </style>
 </head>
@@ -351,6 +351,13 @@ font-size:  26px;
   <button class="js-loweyes">click</button>
 
     <div class="asdasd">
+
+      <img style="border:5px solid"  src="img/eyes-font-line-height-basic.png" width=5% alt="">
+      <img style="border:5px solid"  src="img/eyes-font-line-height-12.png" width=5% alt="">
+      <img style="border:5px solid"  src="img/eyes-font-line-height-15.png" width=5% alt="">
+      <img style="border:5px solid" src="img/eyes-font-colorscheme-black-white.png" width=5% alt="">
+      <img style="border:5px solid"  src="img/eyes-font-colorscheme-white-black.png" width=5% alt="">
+
       <h1>
         123Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
         dolorum molestiae et explicabo sapiente omnis cupiditate, repellendus
@@ -535,49 +542,319 @@ font-size:  26px;
 
   <script type="text/javascript">
 
-var openPanel = function (evt) {
-        evt.preventDefault();
-        forInsert.style.cssText="";
-        forInsert.classList.remove('hide')
-        forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel');
-      }
+var allTagsOnPage = 'body > *:not(forInsert)';
+// 'body > div:not(forInsert)';
 
-    var body = document.querySelector('ul.no-bullet.site-menu__list.clearfix');
-    var title = document.createElement('li');
-    title.classList.add("disable-sort");
-    title.classList.add("site-menu__item");
-    title.id="specialButton";
+  var openPanel = function (evt) {
+    evt.preventDefault();
+    forInsert.style.cssText="";
+    forInsert.classList.remove('hide')
+    var innerPanel = forInsert.querySelector('.low-eyes-panel')
+    innerPanel.classList.toggle('open-panel');
 
-    var title2 = document.createElement('a');
-    title2.id="glaz"
-    // title2.onclick = function() {
-    //   openPanel();
+    if (innerPanel.classList.contains('open-panel')) {
+      localStorage["PanelStatusOpened"]=1
+    } else {
+      localStorage["PanelStatusOpened"]=0
+    }
+//  if (localStorage["PanelStatusOpened"]==1) {
+//       AddFixedPositionForPanel();
+//     }
+
+  }
+
+  var body = document.querySelector('ul.no-bullet.site-menu__list.clearfix');
+  var title = document.createElement('li');
+  title.classList.add("disable-sort");
+  title.classList.add("site-menu__item");
+  title.id="specialButton";
+
+  var title2 = document.createElement('a');
+  title2.id="glaz"
+  // title2.onclick = function() {
+  //   openPanel();
+  // }
+  title2.addEventListener('click', openPanel);
+  title2.textContent="Версия для слабовидящих";
+  title.appendChild(title2);
+  // body.appendChild(title);  //prod
+  document.body.insertBefore(title, document.body.firstChild); //test
+
+
+  var elem = document.createElement('div');
+  elem.id="forInsert";
+  elem.className="forInsert"
+
+  // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
+  //  elem.append(tmpl.content.cloneNode(true));
+  elem.innerHTML = tmpl.innerHTML;
+
+  // document.body.insertAdjacentHTML("beforeend", elem);
+  document.body.insertBefore(elem, document.body.firstChild); //prod
+  // document.body.append(elem);
+  // Сейчас скрипт из <template> выполнится
+
+    // var startBtn = document.querySelector('.js-loweyes');
+
+  var DefaultSettings = ['16px','Times New Roman','normal','normal','BlackAndWhite','ShowImages'];
+  var UserSettings = ['16px','Times New Roman','normal','normal','BlackAndWhite','ShowImages']
+//console.log(UserSettings)
+
+
+
+var ShowDefaultSetting = function () {
+  for (var i=0; i <DefaultSettings.length; i++) {
+    console.log(i + ' свойство ' + DefaultSettings[i]);
+  }
+}
+
+//mifomen
+var ShowLocalStorage = function () {
+ var NameOfProperty = '';
+for (var i=0; i<UserSettings.length+1; i++) {
+   NameOfProperty = "LocalProperty";
+   NameOfProperty +=i;
+   console.log(NameOfProperty + ' ' +localStorage[NameOfProperty]);
+  };
+};
+
+var ClearLocalStorage = function () {
+  var NameOfProperty = '';
+    for (var i=0; i<UserSettings.length; i++) {
+      NameOfProperty = "LocalProperty";
+      NameOfProperty +=i;
+      delete localStorage[NameOfProperty];
+    };
+    return true;
+};
+
+// var LoadSettingFromUser  = function () {
+//   for (var i = 0; i<UserSettings.length;i++) {
+//       NameOfProperty = "LocalProperty";
+//       NameOfProperty +=i;
+//       UserSettings[i] = localStorage[NameOfProperty];
+//       console.log(UserSettings[i] + ' + ' + localStorage[NameOfProperty] )
+//   }
+// };
+// localStorage["LocalProperty0"] = '16px';
+// var body=document.querySelector(".main-body");
+
+var LoadFont = function () {
+  // body.style.fontSize =  localStorage["LocalProperty0"];
+  SetFontSizeForTag(allTagsOnPage, parseInt(localStorage["LocalProperty0"]));
+  // UserSettings[0] = localStorage["LocalProperty0"];
+};
+
+var LoadFontFamily = function () {
+  if (localStorage["LocalProperty1"] == 'Times New Roman') {
+    SetFontFamilyForElements(allTagsOnPage, 'Times New Roman');
+  }
+  if (localStorage["LocalProperty1"] == 'Arial') {
+    SetFontFamilyForElements(allTagsOnPage, 'Arial');
+  }
+};
+
+var LoadLetter = function () {
+  body.style.letterSpacing =  localStorage["LocalProperty2"];
+};
+
+var LoadLine = function () {
+
+  // body.style.lineHeight = localStorage["LocalProperty3"];
+  if (localStorage["LocalProperty3"] == '2.8') {
+    SetLineHeightForElements(allTagsOnPage, '2.8')
+  }
+  if (localStorage["LocalProperty3"] == '1.7') {
+    SetLineHeightForElements(allTagsOnPage, '1.7');
+  }
+   if (localStorage["LocalProperty3"] == 'normal' || '') {
+      LineHeightDefault();
+  }
+
+};
+
+
+
+var LoadColorScheme = function () {
+  if (localStorage["LocalProperty4"] == 'BlackAndWhite') {
+    ChangeColorShemeToBlackAndWhite();
+    return true;
+  };
+  if (localStorage["LocalProperty4"] == 'WhiteAndBlack') {
+    ChangeColorShemeToWhiteAndBlack();
+      return true;
+  };
+  if (localStorage["LocalProperty4"] == 'SchemeGreyColor') {
+    ChangeColorShemeToSchemeGreyColor();
+      return true;
+  }
+};
+
+var LoadStatusImages = function () {
+  if (localStorage["LocalProperty5"] == 'ShowImages') {
+    ChangeStatusImageToFullColorImages();
+      return true;
+  }
+  if (localStorage["LocalProperty5"] == 'GreyColorImagesYes') {
+    ChangeStatusImageToGreyScaleImagess();
+      return true;
+  }
+  if (localStorage["LocalProperty5"] == 'HideImages') {
+    ChangeStatusImageToDisableImages();
+      return true;
+  }
+};
+
+
+
+var FullLoad = function (arr) {
+  if (arr) {
+    //panel.classList.add('open-panel');
+    LoadFont();
+    // LoadFontFamily();
+    // LoadLetter();
+    // LoadLine();
+    // LoadColorScheme();
+    // LoadStatusImages();
+    // AddFixedPositionForPanel();
+
+    // if (localStorage["PanelStatusOpened"]==0) {
+    //   RemoveFixedPositionForPanel();
     // }
-    title2.addEventListener('click', openPanel);
-    title2.textContent="Версия для слабовидящих";
-    title.appendChild(title2);
-    // body.appendChild(title);  //prod
-    document.body.insertBefore(title, document.body.firstChild); //test
+    // if (localStorage["PanelStatusOpened"]==1) {
+    //   AddFixedPositionForPanel();
+    // }
+
+//ActivePanel.innerHTML = 'Вернуться обратно';
+  };
+  return true;
+};
+
+      var AddFixedPositionForPanel = function() {
+  if (document.querySelector(".above")) {
+    document.querySelector(".above").classList.add('fixed');
+    };
+  }
+
+  var RemoveFixedPositionForPanel = function() {
+  if (document.querySelector(".above")) {
+    document.querySelector(".above").remove('fixed');
+  }
+};
 
 
-    var elem = document.createElement('div');
-    elem.id="forInsert";
-    elem.className="forInsert"
+  var FontsDeacrease = function (number) {
+  if (number<=4) {
+    SetFontSizeForTag(allTagsOnPage, 4);
+  } else {
+   number -=2;
+   SetFontSizeForTag(allTagsOnPage, number);
+ }
+ UserSettings[0] = number + 'px';
+ localStorage["LocalProperty0"] =  number + 'px';
+ localStorage["LocalProperty6"] =  number + 'px';
+}
 
-    // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
-    //  elem.append(tmpl.content.cloneNode(true));
-    elem.innerHTML = tmpl.innerHTML;
-    document.body.insertBefore(elem, document.body.firstChild);
-    // document.body.append(elem);
-    // Сейчас скрипт из <template> выполнится
+var SetFontSizeForTag = function (tag,number) {
+  var FindAllTags = document.querySelectorAll(tag); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+    return it.style.fontSize = number + 'px';
+  })
+  return true;
+};
 
-      // var startBtn = document.querySelector('.js-loweyes');
+var FontsDefault = function() {
+  var FindAllTags = document.querySelectorAll(allTagsOnPage) ; //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
 
-      function startInit() {
+    return it.style.cssText = it.style.cssText.replace('font-size: ' + localStorage["LocalProperty0"],'');
+    // it.style.cssText.replace(f,'');
+  })
+    localStorage["LocalProperty0"] = "16px";
+    localStorage["LocalProperty6"] = "16px";
+    UserSettings[0] = "16px";
+    // SaveSettingForNextPages();
+    return true;
+};
+
+
+ var FontsIncrease = function (number) {
+  if (number>75) {
+    SetFontSizeForTag(allTagsOnPage, 80);
+  } else {
+   number +=4;
+   SetFontSizeForTag(allTagsOnPage, number);
+ }
+ UserSettings[0] = number + 'px';
+ localStorage["LocalProperty0"] =  number + 'px';
+ localStorage["LocalProperty6"] =  number + 'px';
+
+}
+
+  var BtnLowFontSize = document.querySelector (".LowFontSize");
+  var BtnMIddleFontSize = document.querySelector (".MiddleFontSize");
+  var BtnLargeFontSize= document.querySelector (".LargeFontSize");
+
+  BtnLowFontSize.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    FontsDeacrease(parseInt(UserSettings[0]));
+// SetFontSizeToLow();
+
+    });
+    // var FontSize = 16;
+  BtnLargeFontSize.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    FontsIncrease(parseInt(UserSettings[0]));
+  });
+  BtnMIddleFontSize.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    FontsDefault();
+  });
+
+
+  function reset() {
+    document.body.style.cssText='';
+    // document.body.style.fontSize=('16px');
+    // body.style.lineHeight=('normal');
+    // body.style.letterSpacing=('normal');
+    // body.className='main-body';
+
+    // DeleteGreyColorForImages();
+    // ShowImage();
+    // FontsDefault();
+    // FontsFamilyDefault();
+    // LineHeightDefault();
+    // RemoveFixedPositionForPanel();
+    // console.log('reset complite');
+  };
+
+  var ButtonReset=document.querySelector(".reset");
+  ButtonReset.addEventListener("click",function(evt){
+  evt.preventDefault();
+      reset();
+  });
+
+  var initPanel = function () {
+    if (localStorage["PanelStatusOpened"]==1) {
+      document.querySelector('.low-eyes-panel').classList.add('open-panel')
+      // forInsert.classList.add('fixed')
+    }
+  }
+
+  function startInit() {
         // forInsert.classList.add('hide');
         // forInsert.classList.remove('hide');
         console.log('init eyes')
         // glaz.addEventListener('click',openPanel )
+        // forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel'); //test
+        // AddFixedPositionForPanel();
+        FullLoad(localStorage["PanelStatusOpened"]);
+        // OpenPanel();
+        initPanel();
       }
     document.addEventListener('DOMContentLoaded', startInit);
 
