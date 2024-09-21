@@ -231,9 +231,10 @@ transition: 300ms ease;
 }
 .reset {
 
-  background-image: url('http://54school.ru/_mod_files/ce_images/loweyes/w_normal.png');
+  background-image: url('img/eyes-reset.png');
   background-repeat: no-repeat;
   width: 33px;
+  background-size: cover;
   height: 33px;
 }
 .LowFontSize,
@@ -258,67 +259,69 @@ transition: 300ms ease;
   width: 40px;
   height: 40px;
   background-position: 50% 50%;
+  /* background-size: 90%; */
+  background-size: cover;
 }
 .LowFontSize {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f1.png);
+  background-image: url(img/eyes-font-size-minus.png);
   font-size: 12px;
 }
 .MiddleFontSize {
-    background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f2.png);
+    background-image: url(img/eyes-font-size-basic.png);
     font-size: 16px;
 }
 .LargeFontSize {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/f3.png);
+  background-image: url(img/eyes-font-size-plus.png);
   font-size: 48px;
 }
 .Arial-bg {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn1.png);
+  background-image: url(img/eyes-font-family-tahoma.png);
 }
 .TimesNewRoman-bg {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/fn2.png);
+  background-image: url(img/eyes-font-family-timesNewRoman.png);
 }
 .letter-spacing-default {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k1.png);
+  background-image: url(img/eyes-font-latter-spacing-basic.png);
 }
 .letter-spacing-middle {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k2.png);
+  background-image: url(img/eyes-font-latter-spacing-12.png);
 }
 .letter-spacing-large {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/k3.png);
+  background-image: url(img/eyes-font-latter-spacing-15.png);
 }
 .line-height-default {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h1.png);
+  background-image: url(img/eyes-font-line-height-basic.png);
 }
 .line-height-middle {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h2.png);
+  background-image: url(img/eyes-font-line-height-12.png);
 }
 .line-height-large {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/h3.png);
+  background-image: url(img/eyes-font-line-height-15.png);
 }
 .BlackAndWhite-bg {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a1.png);
+  background-image: url(img/eyes-font-colorscheme-black-white.png);
 }
 .WhiteAndBlack-bg {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a2.png);
+  background-image: url(img/eyes-font-colorscheme-white-black.png);
 background-color: rgba(123,123,123,0.5);
 }
 .WhiteAndBlack-bg:hover{
   background-color: rgba(240,240,240,1);
 }
 .DarkBlue-bg {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/a3.png);
+  background-image: url(img/eyes-font-colorscheme-greyscale.png);
 }
 .DarkBlue-bg:hover{
   background-color: #a0a0a0;
 }
 .FullColorImages {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c1.png);
+  background-image: url(img/eyes-font-image-fullcolor.png);
 }
 .GreyScaleImages {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c2.png);
+  background-image: url(img/eyes-font-image-greycolor.png);
 }
 .DisableImages {
-  background-image: url(http://54school.ru/_mod_files/ce_images/loweyes/c3.png);
+  background-image: url(img/eyes-font-image-noview.png);
 }
 
 
@@ -539,24 +542,22 @@ var openPanel = function (evt) {
         forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel');
       }
 
-
     var body = document.querySelector('ul.no-bullet.site-menu__list.clearfix');
     var title = document.createElement('li');
     title.classList.add("disable-sort");
     title.classList.add("site-menu__item");
     title.id="specialButton";
 
-
-      var title2 = document.createElement('a');
-      title2.id="glaz"
-      // title2.onclick = function() {
-      //   openPanel();
-      // }
-      title2.addEventListener('click', openPanel);
-      title2.textContent="Версия для слабовидящих";
-      title.appendChild(title2);
-      body.appendChild(title);  //prod
-      // document.body.insertBefore(title, document.body.firstChild); //test
+    var title2 = document.createElement('a');
+    title2.id="glaz"
+    // title2.onclick = function() {
+    //   openPanel();
+    // }
+    title2.addEventListener('click', openPanel);
+    title2.textContent="Версия для слабовидящих";
+    title.appendChild(title2);
+    // body.appendChild(title);  //prod
+    document.body.insertBefore(title, document.body.firstChild); //test
 
 
     var elem = document.createElement('div');
