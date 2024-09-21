@@ -328,7 +328,7 @@ background-color: rgba(123,123,123,0.5);
 
 .BlackAndWhite {
   color: black;
-  background-color: transparent;
+  background-color: white !important;
 }
 .WhiteAndBlack {
   color: white;
@@ -966,7 +966,7 @@ var ChangeColorShemeToBlackAndWhite = function() {
     allBWitems[ind].style.removeProperty("color");
     allBWitems[ind].style.removeProperty("backgroundColor");
     var templateString='color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);'
-    allBWitems[ind].cssText.replace('templateString','')
+    allBWitems[ind].cssText.replace(templateString,'')
 
     }
     document.body.classList.remove('DarkBlue');
