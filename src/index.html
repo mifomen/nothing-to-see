@@ -17,9 +17,9 @@
    /* background-color: red; */
 
 }
-.above {
+/* .above {
     background-color: rgba(255,255,255, 1);
-}
+} */
 
 body {
 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
@@ -57,7 +57,8 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB
   border:2px solid black;
   padding-left:5px;
   padding-right: 5px;
-  height: 65px;
+  height: auto;
+  max-height: 85px;
 }
 .vertical-img  {
   justify-content: center;
@@ -357,6 +358,7 @@ background-color: rgba(123,123,123,0.5);
       <img style="border:5px solid"  src="img/eyes-font-line-height-15.png" width=5% alt="">
       <img style="border:5px solid" src="img/eyes-font-colorscheme-black-white.png" width=5% alt="">
       <img style="border:5px solid"  src="img/eyes-font-colorscheme-white-black.png" width=5% alt="">
+      <img style="border:5px solid"  src="img/eyes-font-image-fullcolor.png" width=5% alt="">
 
       <h1>
         123Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
@@ -542,8 +544,11 @@ background-color: rgba(123,123,123,0.5);
 
   <script type="text/javascript">
 
-var allTagsOnPage = 'body > *:not(forInsert)';
-// 'body > div:not(forInsert)';
+var allTagsOnPage = 'body *';
+// last body:not(forInsert) > *:not(forInsert)>*
+// 'body > div:not(forInsert) *';
+// body > *:not(forInsert)
+// body > div:not(forInsert)>*
 
   var openPanel = function (evt) {
     evt.preventDefault();
@@ -577,8 +582,8 @@ var allTagsOnPage = 'body > *:not(forInsert)';
   title2.addEventListener('click', openPanel);
   title2.textContent="Версия для слабовидящих";
   title.appendChild(title2);
-  // body.appendChild(title);  //prod
-  document.body.insertBefore(title, document.body.firstChild); //test
+  body.appendChild(title);  //prod
+  // document.body.insertBefore(title, document.body.firstChild); //test
 
 
   var elem = document.createElement('div');
@@ -654,27 +659,6 @@ var LoadFontFamily = function () {
   }
 };
 
-var LoadLetter = function () {
-  body.style.letterSpacing =  localStorage["LocalProperty2"];
-};
-
-var LoadLine = function () {
-
-  // body.style.lineHeight = localStorage["LocalProperty3"];
-  if (localStorage["LocalProperty3"] == '2.8') {
-    SetLineHeightForElements(allTagsOnPage, '2.8')
-  }
-  if (localStorage["LocalProperty3"] == '1.7') {
-    SetLineHeightForElements(allTagsOnPage, '1.7');
-  }
-   if (localStorage["LocalProperty3"] == 'normal' || '') {
-      LineHeightDefault();
-  }
-
-};
-
-
-
 var LoadColorScheme = function () {
   if (localStorage["LocalProperty4"] == 'BlackAndWhite') {
     ChangeColorShemeToBlackAndWhite();
@@ -705,17 +689,86 @@ var LoadStatusImages = function () {
   }
 };
 
+var LoadLetter = function () {
+  document.body.style.letterSpacing = localStorage["LocalProperty2"];
+};
 
+
+var SetLineHeightForElements = function (tag,multiplier) {
+  var FindAllTags = document.querySelectorAll(tag); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[3] = multiplier;
+     return it.style.lineHeight =  multiplier;
+  })
+    return true;
+};
+
+var LineHeightDefault = function() {
+  var FindAllTags = document.querySelectorAll(allTagsOnPage); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[3] = "";
+    return it.style.lineHeight  =  '';
+  })
+    localStorage["LocalProperty3"] = "";
+    UserSettings[3] = "";
+    return true;
+};
+
+var LineDefault = document.querySelector(".line-height-default");
+var LIneMiddle = document.querySelector(".line-height-middle");
+var LIneLarge = document.querySelector(".line-height-large");
+LineDefault.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  // body.style.lineHeight = "normal";
+  LineHeightDefault();
+  // SetLineHeightForElements(allTagsOnPage,'')
+  // UserSettings[3] = '';
+  //      localStorage["LocalProperty3"] = ''
+    // SaveSettingForNextPages();
+});
+LIneMiddle.addEventListener("click",function(evt) {
+  evt.preventDefault();
+   // body.style.lineHeight = "1.7";
+   SetLineHeightForElements(allTagsOnPage,'1.7')
+    UserSettings[3] = '1.7';
+       localStorage["LocalProperty3"] = '1.7'
+    // SaveSettingForNextPages();
+});
+LIneLarge.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  // body.style.lineHeight = "2.8";
+    SetLineHeightForElements(allTagsOnPage,'2.8')
+   UserSettings[3] = '2.8';
+       localStorage["LocalProperty3"] = '2.8'
+    // SaveSettingForNextPages();
+});
+
+var LoadLine = function () {
+  // body.style.lineHeight = localStorage["LocalProperty3"];
+  if (localStorage["LocalProperty3"] == '2.8') {
+    SetLineHeightForElements(allTagsOnPage,'2.8')
+  }
+  if (localStorage["LocalProperty3"] == '1.7') {
+    SetLineHeightForElements(allTagsOnPage,'1.7');
+  }
+  if (localStorage["LocalProperty3"] == 'normal' || '') {
+    LineHeightDefault();
+  }
+};
 
 var FullLoad = function (arr) {
   if (arr) {
     //panel.classList.add('open-panel');
     LoadFont();
-    // LoadFontFamily();
-    // LoadLetter();
-    // LoadLine();
-    // LoadColorScheme();
-    // LoadStatusImages();
+    LoadFontFamily();
+    LoadLetter();
+    LoadLine();
+    LoadColorScheme();
+    LoadStatusImages();
     // AddFixedPositionForPanel();
 
     // if (localStorage["PanelStatusOpened"]==0) {
@@ -771,12 +824,14 @@ var FontsDefault = function() {
   TimeMassive = Array.from (FindAllTags);
   TimeMassive.forEach(function (it) {
 
-    return it.style.cssText = it.style.cssText.replace('font-size: ' + localStorage["LocalProperty0"],'');
+    return it.style.fontSize='';
+    //  = it.style.cssText.replace('font-size: ' + localStorage["LocalProperty0"],'');
+    // return it.style.cssText = it.style.cssText.replace('font-size: ' + localStorage["LocalProperty0"],'');
     // it.style.cssText.replace(f,'');
   })
-    localStorage["LocalProperty0"] = "16px";
-    localStorage["LocalProperty6"] = "16px";
-    UserSettings[0] = "16px";
+    localStorage["LocalProperty0"] = "";
+    localStorage["LocalProperty6"] = "";
+    UserSettings[0] = "0";
     // SaveSettingForNextPages();
     return true;
 };
@@ -816,20 +871,248 @@ var FontsDefault = function() {
   });
 
 
+  var SetFontFamilyForElements = function (tag,family) {
+  var FindAllTags = document.querySelectorAll(tag); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[1] = family;
+     return it.style.fontFamily   =  family + ",sans-serif";
+  })
+    return true;
+};
+
+  var Arial=document.querySelector(".Arial");
+  var TimesNewRoman= document.querySelector(".TimesNewRoman");
+  Arial.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    // SetFontFamilyForElements(allTagsOnPage,'Times New Roman');
+  SetFontFamilyForElements(allTagsOnPage,'Arial');
+    // body.classList.add('Arial');
+    // body.classList.remove('TimesNewRoman');
+    // UserSettings[1] = 'Arial';
+        localStorage["LocalProperty1"] = 'Arial'
+      // SaveSettingForNextPages();
+  });
+  TimesNewRoman.addEventListener("click",function(evt) {
+    evt.preventDefault();
+      SetFontFamilyForElements(allTagsOnPage,'Times New Roman');
+    // body.classList.add('TimesNewRoman');
+    // body.classList.remove('Arial');
+    // UserSettings[1] = 'Times New Roman';
+        localStorage["LocalProperty1"] = 'Times New Roman';
+      // SaveSettingForNextPages();
+  });
+
+
+var LetterDefault = document.querySelector(".letter-spacing-default");
+var LetterMiddle = document.querySelector(".letter-spacing-middle");
+var LetterLarge = document.querySelector(".letter-spacing-large");
+
+LetterDefault.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  document.body.style.letterSpacing = "normal";
+  UserSettings[2] = 'normal';
+  localStorage["LocalProperty2"] = 'normal'
+  // SaveSettingForNextPages();
+});
+LetterMiddle.addEventListener("click",function(evt) {
+   evt.preventDefault();
+  document.body.style.letterSpacing = "2px";
+  UserSettings[2] = '2px';
+  localStorage["LocalProperty2"] = '2px'
+  // SaveSettingForNextPages();
+});
+LetterLarge.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  document.body.style.letterSpacing = "4px";
+  UserSettings[2] = '4px';
+  localStorage["LocalProperty2"] = '4px'
+    // SaveSettingForNextPages();
+});
+
+
+var FontsFamilyDefault = function() {
+  var FindAllTags = document.querySelectorAll(allTagsOnPage); //.main-body *
+  var TimeMassive = [];
+  TimeMassive = Array.from (FindAllTags);
+  TimeMassive.forEach(function (it) {
+     UserSettings[1] = "";
+    return it.style.fontFamily  =  "";
+  })
+    localStorage["LocalProperty1"] = "";
+    UserSettings[1] = "";
+    return true;
+};
+
+
+
+var BlackAndWhite = document.querySelector(".BlackAndWhite");
+var WhiteAndBlack = document.querySelector(".WhiteAndBlack-bg");
+var SchemeGreyColor = document.querySelector(".DarkBlue");
+
+var ChangeColorShemeToBlackAndWhite = function() {
+  // var above = document.querySelector(".above");
+  //   above.style.backgroundColor = '#FFF';
+    document.body.style.backgroundColor = '#ffF';
+    document.body.style.color = '#000';
+    document.body.classList.remove('DarkBlue');
+    document.body.classList.remove('WhiteAndBlack');
+    document.body.classList.remove('grayscaleFilterFull');
+    document.body.classList.add('BlackAndWhite');
+};
+
+BlackAndWhite.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    ChangeColorShemeToBlackAndWhite ();
+    UserSettings[4] = 'BlackAndWhite';
+       localStorage["LocalProperty4"] = 'BlackAndWhite'
+    // SaveSettingForNextPages();
+});
+
+var ChangeColorShemeToWhiteAndBlack=function() {
+// var above = document.querySelector(".above");
+// above.style.backgroundColor = '#000';
+  document.body.style.backgroundColor = '#000';
+  document.body.style.color = '#fff';
+  document.body.classList.remove('DarkBlue');
+  document.body.classList.remove('BlackAndWhite');
+  document.body.classList.remove('grayscaleFilterFull');
+  document.body.classList.add('WhiteAndBlack');
+};
+
+WhiteAndBlack.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    ChangeColorShemeToWhiteAndBlack();
+    UserSettings[4] = 'WhiteAndBlack';
+    localStorage["LocalProperty4"] = 'WhiteAndBlack'
+    // SaveSettingForNextPages();
+});
+
+var ChangeColorShemeToSchemeGreyColor = function() {
+   // body.classList.remove('WhiteAndBlack');
+   document.body.style.backgroundColor = '#fff';
+   document.body.style.color = '#000';
+   document.body.classList.remove('BlackAndWhite');
+   document.body.classList.add('grayscaleFilterFull');
+}
+SchemeGreyColor.addEventListener("click",function(evt) {
+    evt.preventDefault();
+    ChangeColorShemeToSchemeGreyColor();
+    UserSettings[4] = 'SchemeGreyColor';
+       localStorage["LocalProperty4"] = 'SchemeGreyColor'
+    // SaveSettingForNextPages();
+});
+
+var LoadColorScheme = function () {
+  if (localStorage["LocalProperty4"] == 'BlackAndWhite') {
+    ChangeColorShemeToBlackAndWhite();
+    return true;
+  };
+  if (localStorage["LocalProperty4"] == 'WhiteAndBlack') {
+    ChangeColorShemeToWhiteAndBlack();
+      return true;
+  };
+  if (localStorage["LocalProperty4"] == 'SchemeGreyColor') {
+    ChangeColorShemeToSchemeGreyColor();
+      return true;
+  }
+};
+
+
+var ShowImage = function () {
+var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++)
+    images[i].style.display = "";
+var SVGimages = document.getElementsByTagName("svg");
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].style.display = "";
+}
+
+var HideImage = function () {
+  var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++)
+    images[i].style.display = "none";
+
+  var SVGimages = document.getElementsByTagName("svg");
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].style.display = "none";
+}
+
+var GreyColorForImages = function () {
+      var images = document.getElementsByTagName("img");
+      for (var i = 0; i < images.length; i++)
+      images[i].classList.add('grayscaleFilterFull');
+var SVGimages = document.getElementsByTagName("svg");
+      for (var i = 0; i < SVGimages.length; i++)
+       SVGimages[i].classList.add('grayscaleFilterFull');
+
+}
+var DeleteGreyColorForImages = function () {
+  var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++)
+      images[i].classList.remove('grayscaleFilterFull');
+var SVGimages = document.getElementsByTagName("svg");
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].classList.remove('grayscaleFilterFull');
+}
+
+var FullColorImages = document.querySelector(".FullColorImages");
+var GreyScaleImages = document.querySelector(".GreyScaleImages");
+var DisableImages = document.querySelector(".DisableImages");
+
+var ChangeStatusImageToFullColorImages = function () {
+  ShowImage();
+  DeleteGreyColorForImages();
+  UserSettings[5] = 'ShowImages';
+       localStorage["LocalProperty5"] = 'ShowImages'
+    // SaveSettingForNextPages();
+};
+FullColorImages.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  ChangeStatusImageToFullColorImages();
+});
+var ChangeStatusImageToGreyScaleImagess =function () {
+  GreyColorForImages();
+  ShowImage();
+  UserSettings[5] = 'GreyColorImagesYes';
+       localStorage["LocalProperty5"] = 'GreyColorImagesYes'
+    // SaveSettingForNextPages();
+};
+GreyScaleImages.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  ChangeStatusImageToGreyScaleImagess();
+});
+var  ChangeStatusImageToDisableImages = function() {
+  HideImage();
+  UserSettings[5] = 'HideImages';
+       localStorage["LocalProperty5"] = 'HideImages'
+    // SaveSettingForNextPages();
+};
+DisableImages.addEventListener("click",function(evt) {
+  evt.preventDefault();
+  ChangeStatusImageToDisableImages();
+});
+
   function reset() {
+    ClearLocalStorage()
     document.body.style.cssText='';
+    document.body.style.letterSpacing=('normal');
+    FontsDefault();
+    LoadLetter();
+    LoadLine();
     // document.body.style.fontSize=('16px');
     // body.style.lineHeight=('normal');
-    // body.style.letterSpacing=('normal');
     // body.className='main-body';
-
-    // DeleteGreyColorForImages();
+    ShowImage();
+    DeleteGreyColorForImages();
     // ShowImage();
     // FontsDefault();
-    // FontsFamilyDefault();
-    // LineHeightDefault();
+    FontsFamilyDefault();
+    LineHeightDefault();
     // RemoveFixedPositionForPanel();
     // console.log('reset complite');
+    localStorage["PanelStatusOpened"]=0;
   };
 
   var ButtonReset=document.querySelector(".reset");

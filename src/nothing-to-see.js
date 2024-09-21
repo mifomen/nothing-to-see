@@ -286,15 +286,15 @@ if (ActivePanel.innerHTML== 'Версия для слабовидящих') {
 return false;
 });
 
-var SetFontSizeToLow = function() {
-  body.classList.add('LowFontSize');
-  body.classList.remove('LargeFontSize');
+// var SetFontSizeToLow = function() {
+//   body.classList.add('LowFontSize');
+//   body.classList.remove('LargeFontSize');
+// };
 
-};
-var SetFontSizeToLarge = function () {
- body.classList.add('LargeFontSize');
- body.classList.remove('LowFontSize');
-};
+// var SetFontSizeToLarge = function () {
+//   body.classList.add('LargeFontSize');
+//   body.classList.remove('LowFontSize');
+// };
 
 // var FontsDeacrease = function (element) {
 // var number = parseInt(element.style.fontSize);
@@ -363,16 +363,7 @@ var FontsDeacrease = function (number) {
  localStorage["LocalProperty6"] =  number + 'px';
 }
 
-var SetFontFamilyForElements = function (tag,family) {
-  var FindAllTags = document.querySelectorAll(tag); //.main-body *
-  var TimeMassive = [];
-  TimeMassive = Array.from (FindAllTags);
-  TimeMassive.forEach(function (it) {
-     UserSettings[1] = family;
-     return it.style.fontFamily   =  family + ",sans-serif";
-  })
-    return true;
-};
+
 
 var FontsFamilyDefault = function() {
   var FindAllTags = document.querySelectorAll('.main-body *'); //.main-body *
@@ -454,6 +445,7 @@ TimesNewRoman.addEventListener("click",function(evt) {
        localStorage["LocalProperty1"] = 'Times New Roman';
     // SaveSettingForNextPages();
 });
+
 var LetterDefault = document.querySelector(".letter-spacing-default");
 var LetterMiddle = document.querySelector(".letter-spacing-middle");
 var LetterLarge = document.querySelector(".letter-spacing-large");
@@ -478,6 +470,7 @@ LetterLarge.addEventListener("click",function(evt) {
        localStorage["LocalProperty2"] = '4px'
     // SaveSettingForNextPages();
 });
+
 var LineDefault = document.querySelector(".line-height-default");
 var LIneMiddle = document.querySelector(".line-height-middle");
 var LIneLarge = document.querySelector(".line-height-large");
@@ -506,6 +499,7 @@ LIneLarge.addEventListener("click",function(evt) {
        localStorage["LocalProperty3"] = '2.8'
     // SaveSettingForNextPages();
 });
+
 var BlackAndWhite = document.querySelector(".BlackAndWhite");
 var WhiteAndBlack = document.querySelector(".WhiteAndBlack-bg");
 var SchemeGreyColor = document.querySelector(".DarkBlue");
@@ -554,26 +548,26 @@ SchemeGreyColor.addEventListener("click",function(evt) {
        localStorage["LocalProperty4"] = 'SchemeGreyColor'
     // SaveSettingForNextPages();
 });
+
 var ShowImage = function () {
 var images = document.getElementsByTagName("img");
-      for (var i = 0; i < images.length; i++)
-      images[i].style.display = "";
+  for (var i = 0; i < images.length; i++)
+    images[i].style.display = "";
 var SVGimages = document.getElementsByTagName("svg");
-      for (var i = 0; i < SVGimages.length; i++)
-      SVGimages[i].style.display = "";
-
-
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].style.display = "";
 }
+
 var HideImage = function () {
-var images = document.getElementsByTagName("img");
-      for (var i = 0; i < images.length; i++)
-      images[i].style.display = "none";
+  var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++)
+    images[i].style.display = "none";
 
-var SVGimages = document.getElementsByTagName("svg");
-      for (var i = 0; i < SVGimages.length; i++)
-      SVGimages[i].style.display = "none";
-
+  var SVGimages = document.getElementsByTagName("svg");
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].style.display = "none";
 }
+
 var GreyColorForImages = function () {
       var images = document.getElementsByTagName("img");
       for (var i = 0; i < images.length; i++)
@@ -584,13 +578,12 @@ var SVGimages = document.getElementsByTagName("svg");
 
 }
 var DeleteGreyColorForImages = function () {
-      var images = document.getElementsByTagName("img");
-      for (var i = 0; i < images.length; i++)
-         images[i].classList.remove('grayscaleFilterFull');
+  var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++)
+      images[i].classList.remove('grayscaleFilterFull');
 var SVGimages = document.getElementsByTagName("svg");
-      for (var i = 0; i < SVGimages.length; i++)
-       SVGimages[i].classList.remove('grayscaleFilterFull');
-
+  for (var i = 0; i < SVGimages.length; i++)
+    SVGimages[i].classList.remove('grayscaleFilterFull');
 }
 
 var FullColorImages = document.querySelector(".FullColorImages");
@@ -619,6 +612,7 @@ GreyScaleImages.addEventListener("click",function(evt) {
   evt.preventDefault();
   ChangeStatusImageToGreyScaleImagess();
 });
+
 var  ChangeStatusImageToDisableImages = function() {
   HideImage();
   UserSettings[5] = 'HideImages';
@@ -629,6 +623,7 @@ DisableImages.addEventListener("click",function(evt) {
   evt.preventDefault();
   ChangeStatusImageToDisableImages();
 });
+
 function reset() {
     body.style.fontSize=('16px');
     // body.style.lineHeight=('normal');
