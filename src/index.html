@@ -959,11 +959,14 @@ var ChangeColorShemeToBlackAndWhite = function() {
 
   var allBWitems = document.querySelectorAll(allTagsOnPage);
   for (var ind = 0; ind < allBWitems.length; ind++) {
+
+
     allBWitems[ind].style.color="#000";
     allBWitems[ind].style.backgroundColor="#fff";
     allBWitems[ind].style.removeProperty("color");
     allBWitems[ind].style.removeProperty("backgroundColor");
-
+    var templateString='color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);'
+    allBWitems[ind].cssText.replace('templateString','')
 
     }
     document.body.classList.remove('DarkBlue');
