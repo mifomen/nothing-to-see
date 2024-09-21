@@ -545,6 +545,8 @@ background-color: rgba(123,123,123,0.5);
   <script type="text/javascript">
 
 var allTagsOnPage = 'body *';
+
+console.log(document.querySelectorAll(allTagsOnPage))
 // last body:not(forInsert) > *:not(forInsert)>*
 // 'body > div:not(forInsert) *';
 // body > *:not(forInsert)
@@ -957,8 +959,12 @@ var ChangeColorShemeToBlackAndWhite = function() {
 
   var allBWitems = document.querySelectorAll(allTagsOnPage);
   for (var ind = 0; ind < allBWitems.length; ind++) {
-      allBWitems[ind].style.removeProperty("color");
-      allBWitems[ind].style.removeProperty("backgroundColor");
+    allBWitems[ind].style.color="#000";
+    allBWitems[ind].style.backgroundColor="#fff";
+    allBWitems[ind].style.removeProperty("color");
+    allBWitems[ind].style.removeProperty("backgroundColor");
+
+
     }
     document.body.classList.remove('DarkBlue');
     document.body.classList.remove('WhiteAndBlack');
@@ -1127,7 +1133,7 @@ DisableImages.addEventListener("click",function(evt) {
     LineHeightDefault();
     // RemoveFixedPositionForPanel();
     // console.log('reset complite');
-    localStorage["PanelStatusOpened"]=0;
+    // localStorage["PanelStatusOpened"]=1;
   };
 
   var ButtonReset=document.querySelector(".reset");
