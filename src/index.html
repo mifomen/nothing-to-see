@@ -1161,22 +1161,36 @@ DisableImages.addEventListener("click",function(evt) {
       // forInsert.classList.add('fixed')
     }
   }
+  var initGoogleTag = function () {
+    var googleFrameNoScript = document.createElement('noscript');
+    var googleFrame = document.createElement('iframe');
+    googleFrame.src="https://www.googletagmanager.com/ns.html?id=GTM-PLK39QDC";
+    googleFrame.height="0";
+    googleFrame.width="0";
+    googleFrame.style.display="none;"
+    googleFrame.style.visibility="hidden;"
+
+    googleFrameNoScript.append(googleFrame);
+    document.body.appendChild(googleFrame);
+  }
+
+
 
   function startInit() {
-    // forInsert.classList.add('hide');
-    // forInsert.classList.remove('hide');
-    console.log('init eyes')
-    // glaz.addEventListener('click',openPanel )
-    // forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel'); //test
-    // AddFixedPositionForPanel();
-    // FullLoad(localStorage["PanelStatusOpened"]);
-    // OpenPanel();
-    initPanel();
-  }
+        // forInsert.classList.add('hide');
+        // forInsert.classList.remove('hide');
+        console.log('init eyes')
+        // glaz.addEventListener('click',openPanel )
+        // forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel'); //test
+        // AddFixedPositionForPanel();
+        FullLoad(localStorage["PanelStatusOpened"]);
+        // OpenPanel();
+        initPanel();
+        initGoogleTag();
+      }
   document.addEventListener('DOMContentLoaded', startInit);
   document.addEventListener('DOMContentLoaded', loadOnOpenPage);
   document.addEventListener('load', loadOnOpenPage);
-
 
   </script>
 </body>

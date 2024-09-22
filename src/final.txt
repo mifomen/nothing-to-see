@@ -1135,8 +1135,8 @@ DisableImages.addEventListener("click",function(evt) {
     googleFrame.style.display="none;"
     googleFrame.style.visibility="hidden;"
 
-    googleFrameNoScript.appenChild(googleFrame);
-    document.body.appenChild(googleFrame);
+    googleFrameNoScript.append(googleFrame);
+    document.body.appendChild(googleFrame);
   }
 
 
