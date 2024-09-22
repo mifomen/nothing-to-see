@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
+<style>
+  .forInsert {
+  position:relative;
+  z-index:500;
+  }
 
-    .hide {
-      display: none;
-    }
-    .fixed {
+  .fixed {
    width: 100%;
    position: fixed;
    top: 0;
    z-index: 100;
-   /* background-color: red; */
+
 
 }
-/* .above {
+.above {
     background-color: rgba(255,255,255, 1);
-} */
+}
 
 body {
 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==") 0px 0px;
@@ -59,6 +54,7 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB
   padding-right: 5px;
   height: auto;
   max-height: 85px;
+
 }
 .vertical-img  {
   justify-content: center;
@@ -89,7 +85,40 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB
   border: 1px solid darkorange;
 }
 
+.slider-with-js {
+  position: relative;
+  z-index: -10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(233, 241, 216,0.5);
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border:2px solid green;
+}
+.slider-with-js img{
+  border-radius: 25px;
+      display: block;
+}
 
+#slides,
+#slides2 {
+  font-size: 32px;
+  position: relative;
+
+  width: 400px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide,
+.slide2 {
+
+  position: absolute;
+  opacity: 0;
+  transition: ease 1500ms;
+}
 .first {
    opacity: 1;
 }
@@ -232,11 +261,11 @@ transition: 300ms ease;
 }
 .reset {
 
-  background-image: url('img/eyes-reset.png');
+  background-image: url('https://i.siteapi.org/7_mfFIetmOf7NXomSBjAsNXzB9k=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/nyihgst42zkggokcs48ks4g8cwg40w');
   background-repeat: no-repeat;
   width: 33px;
-  background-size: cover;
   height: 33px;
+  background-size: cover;
 }
 .LowFontSize,
 .MiddleFontSize,
@@ -260,69 +289,68 @@ transition: 300ms ease;
   width: 40px;
   height: 40px;
   background-position: 50% 50%;
-  /* background-size: 90%; */
   background-size: cover;
 }
 .LowFontSize {
-  background-image: url(img/eyes-font-size-minus.png);
+  background-image: url('https://i.siteapi.org/NIJ4yhQO5xmhTzf80rpVSSLn7qw=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/6y52e7hj0i044g44os8w0g8k4gg8kk');
   font-size: 12px;
 }
 .MiddleFontSize {
-    background-image: url(img/eyes-font-size-basic.png);
+    background-image: url('https://i.siteapi.org/vTDwsyvetKVSn0OuH53nk9cevt4=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/h8cou6zlbtkco8wkw8o0c884k4kksw');
     font-size: 16px;
 }
 .LargeFontSize {
-  background-image: url(img/eyes-font-size-plus.png);
+  background-image: url('https://i.siteapi.org/ilxerFZ5ZYnwbifoqJUFWbOePoU=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/7ijjcz9tax44ggc0s8k0c4wwg84cc8');
   font-size: 48px;
 }
 .Arial-bg {
-  background-image: url(img/eyes-font-family-tahoma.png);
+  background-image: url('https://i.siteapi.org/uydsad_ihuAIPUxaPGWEbcO5LKk=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/f80j3jmqylw800kkco0w0wwgocook8');
 }
 .TimesNewRoman-bg {
-  background-image: url(img/eyes-font-family-timesNewRoman.png);
+  background-image: url('https://i.siteapi.org/WWqb85v-X7dxjlJM_E3kDzhxa9g=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/cixdzw5i454wk0kc4woc4s408o8cgw');
 }
 .letter-spacing-default {
-  background-image: url(img/eyes-font-latter-spacing-basic.png);
+  background-image: url('https://i.siteapi.org/NBbB_aQfrWQOIvNtIhj8ln5AXyw=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/8xzej1sn0q4ook0o8w4k88g8kwo8g4');
 }
 .letter-spacing-middle {
-  background-image: url(img/eyes-font-latter-spacing-12.png);
+  background-image: url('https://i.siteapi.org/exWWymMKJmtIx8iWGOE472Q9e8A=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/8oe647uquvwgg84ks8wgcgc4cg0008');
 }
 .letter-spacing-large {
-  background-image: url(img/eyes-font-latter-spacing-15.png);
+  background-image: url('https://i.siteapi.org/_Bcs8bkeleEDaMYU1lZt7HEDIPE=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/c077hk5i920c08gowco4w0w8skk8c0');
 }
 .line-height-default {
-  background-image: url(img/eyes-font-line-height-basic.png);
+  background-image: url('https://i.siteapi.org/iAMgmDEJS8zBfxamEr8BMya0U6M=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/c1z8c4oqxgggo404c8sk4ogoksc848');
 }
 .line-height-middle {
-  background-image: url(img/eyes-font-line-height-12.png);
+  background-image: url('https://i.siteapi.org/1ZNK6njp-ebF9GlFgZPj9PwK9Xg=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/2nqkddgisckkswsc8s8cwg8kos4cok');
 }
 .line-height-large {
-  background-image: url(img/eyes-font-line-height-15.png);
+  background-image: url('https://i.siteapi.org/Q44mD3TyXw3-OsCLMkR4itJ4Dg4=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/c9rk75vqw48co8k4ck88c4gkcwg4gg');
 }
 .BlackAndWhite-bg {
-  background-image: url(img/eyes-font-colorscheme-black-white.png);
+  background-image: url('https://i.siteapi.org/-wiOPdW5aX98PzXtC7TW5KkTJ6o=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/2u9lnzz8idicokocgogsgoswgckowg');
 }
 .WhiteAndBlack-bg {
-  background-image: url(img/eyes-font-colorscheme-white-black.png);
+  background-image: url('https://i.siteapi.org/yaLL8-ibMQvrla9_oE16Q3KU3NI=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/ch649p4oi88440gkssw00cog8kk48g');
 background-color: rgba(123,123,123,0.5);
 }
 .WhiteAndBlack-bg:hover{
   background-color: rgba(240,240,240,1);
 }
 .DarkBlue-bg {
-  background-image: url(img/eyes-font-colorscheme-greyscale.png);
+  background-image: url('https://i.siteapi.org/ldnSNXs0R_WwAASELKlIdqFxxH4=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/i197sv5ej8gk88cwsggckw0g0kck8g');
 }
 .DarkBlue-bg:hover{
   background-color: #a0a0a0;
 }
 .FullColorImages {
-  background-image: url(img/eyes-font-image-fullcolor.png);
+  background-image: url('https://i.siteapi.org/YB3NWeKwAGUkFyDTZQ8v-dwd0ok=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/9ybfge4apsg8ws0cgo8oo8ocswo4o0');
 }
 .GreyScaleImages {
-  background-image: url(img/eyes-font-image-greycolor.png);
+  background-image: url('https://i.siteapi.org/jy4Uq7T-XGWjILWpmv-j1igWdT8=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/5ievi6nzar4sg08gwss0cccwgk0sgk');
 }
 .DisableImages {
-  background-image: url(img/eyes-font-image-noview.png);
+  background-image: url('https://i.siteapi.org/wMAXKxt9betiCEkyPCg4GiBfohc=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/ou277fcdz9wo8sw4s8g8ogkk84wos8');
 }
 
 
@@ -342,73 +370,10 @@ background-color: rgba(123,123,123,0.5);
    filter: grayscale(100%);
 }
 
-/* body *:not(nth-child(1)) {
-  font-size:  148px;
-} */
 
-  </style>
-</head>
-<body>
-  <button class="js-loweyes">click</button>
+</style>
 
-    <div class="asdasd">
-
-      <img style="border:5px solid"  src="img/eyes-font-line-height-basic.png" width=5% alt="">
-      <img style="border:5px solid"  src="img/eyes-font-line-height-12.png" width=5% alt="">
-      <img style="border:5px solid"  src="img/eyes-font-line-height-15.png" width=5% alt="">
-      <img style="border:5px solid" src="img/eyes-font-colorscheme-black-white.png" width=5% alt="">
-      <img style="border:5px solid"  src="img/eyes-font-colorscheme-white-black.png" width=5% alt="">
-      <img style="border:5px solid"  src="img/eyes-font-image-fullcolor.png" width=5% alt="">
-
-      <h1>
-        123Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
-        dolorum molestiae et explicabo sapiente omnis cupiditate, repellendus
-        aut perferendis quidem quae maxime perspiciatis velit ea consequuntur
-        sed? Dolorum, soluta, at?
-      </h1>
-      <h2>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam,
-        dolorum! Aut, repellat incidunt molestiae? Facilis incidunt dolor id,
-        excepturi exercitationem vitae eligendi sint debitis rem at ex fugit
-        quibusdam distinctio.
-      </h2>
-      <a href="#"
-        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas nemo
-        veniam quaerat quibusdam nulla reiciendis, quasi odio ipsam rerum autem
-        impedit unde beatae repudiandae sunt pariatur, accusantium dolores,
-        laborum distinctio!</a
-      >
-      <article>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, ad?
-        Expedita veritatis totam provident eos itaque reprehenderit assumenda,
-        maiores vel, amet aperiam ad, illo. Sed totam, id assumenda debitis
-        itaque.
-      </article>
-
-      <div id="lay" style="font-size: 24px">
-        font-size: 24px; background-color: red; mifomen123 123
-      </div>
-
-      <div
-        style="
-          font-size: 16px;
-          background-color: rgba(0, 0, 255, 0.2);
-          display: block;
-          width: 800px;
-          height: 400px;
-        "
-      >
-        font-size: 16px; background-color: rgba(0,0,255,0.2); display: block;
-        width: 800px; height:400px;
-      </div>
-
-      <div class="test" style="font-size: 55px">test</div>
-    </div>
-  <div class="message">Привет, Мир2!</div>
-  <div class="message">Привет, Мир3!</div>
-  <div class="message">Привет, Мир4!</div>
-  <div class="message">Привет, Мир5!</div>
-  <div id="tmpl" style="display: none" class="hide">
+<div id="tmpl" style="display: none">
     <div class="above">
       <div class="low-eyes-panel"
         style="font-size: 16px;
@@ -542,15 +507,9 @@ background-color: rgba(123,123,123,0.5);
     </div>
   </div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
 var allTagsOnPage = 'body *';
-
-// console.log(document.querySelectorAll(allTagsOnPage))
-// last body:not(forInsert) > *:not(forInsert)>*
-// 'body > div:not(forInsert) *';
-// body > *:not(forInsert)
-// body > div:not(forInsert)>*
 
   var openPanel = function (evt) {
     evt.preventDefault();
@@ -571,10 +530,12 @@ var allTagsOnPage = 'body *';
   }
 
   var body = document.querySelector('ul.no-bullet.site-menu__list.clearfix');
+
   var title = document.createElement('li');
   title.classList.add("disable-sort");
   title.classList.add("site-menu__item");
   title.id="specialButton";
+  title.style.width="200px";
 
   var title2 = document.createElement('a');
   title2.id="glaz"
@@ -582,10 +543,18 @@ var allTagsOnPage = 'body *';
   //   openPanel();
   // }
   title2.addEventListener('click', openPanel);
-  title2.textContent="Версия для слабовидящих";
+  //title2.textContent="Версия для слабовидящих";
+
+  var eyeImgBtn = document.createElement('img');
+      eyeImgBtn.src="https://i.siteapi.org/gyJ76RwQYdEpc8PjiVWntZi_g5U=/fit-in/1400x1000/center/top/s2.siteapi.org/127b3da732b240f/img/s24az21beu8k004sk8ggkg44gw4o4g";
+  eyeImgBtn.title="включить версию для слбовидящих";
+  eyeImgBtn.style.width="100%";
+  eyeImgBtn.style.borderRadius="15px";
+ title2.appendChild(eyeImgBtn);
+
   title.appendChild(title2);
-  // body.appendChild(title);  //prod
-  document.body.insertBefore(title, document.body.firstChild); //test
+  body.appendChild(title);  //prod
+  // document.body.insertBefore(title, document.body.firstChild); //test
 
 
   var elem = document.createElement('div');
@@ -598,7 +567,7 @@ var allTagsOnPage = 'body *';
 
   // document.body.insertAdjacentHTML("beforeend", elem);
   document.body.insertBefore(elem, document.body.firstChild); //prod
-  // document.body.append(elem); //test
+  // document.body.append(elem);
   // Сейчас скрипт из <template> выполнится
 
     // var startBtn = document.querySelector('.js-loweyes');
@@ -785,16 +754,6 @@ var FullLoad = function (arr) {
   return true;
 };
 
-var loadOnOpenPage = function () {
-  LoadFont();
-  LoadFontFamily();
-  LoadLetter();
-  LoadLine();
-  LoadColorScheme();
-  LoadStatusImages();
-  return true;
-};
-
       var AddFixedPositionForPanel = function() {
   if (document.querySelector(".above")) {
     document.querySelector(".above").classList.add('fixed');
@@ -958,7 +917,6 @@ var FontsFamilyDefault = function() {
 };
 
 
-
 var BlackAndWhite = document.querySelector(".BlackAndWhite");
 var WhiteAndBlack = document.querySelector(".WhiteAndBlack-bg");
 var SchemeGreyColor = document.querySelector(".DarkBlue");
@@ -970,15 +928,9 @@ var ChangeColorShemeToBlackAndWhite = function() {
   var allBWitems = document.querySelectorAll(allTagsOnPage);
   for (var ind = 0; ind < allBWitems.length; ind++) {
 
-
-    allBWitems[ind].style.color="#000";
-    allBWitems[ind].style.backgroundColor="#fff";
-    // allBWitems[ind].style.removeProperty("color");
-    // allBWitems[ind].style.removeProperty("backgroundColor");
-    // var templateString='color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);'
-    // allBWitems[ind].cssText.replace(templateString,'')
-
-    }
+      allBWitems[ind].style.color = '';
+      allBWitems[ind].style.backgroundColor = '';
+      }
     document.body.classList.remove('DarkBlue');
     document.body.classList.remove('WhiteAndBlack');
     document.body.classList.remove('grayscaleFilterFull');
@@ -1004,6 +956,7 @@ var allBWitems = document.querySelectorAll(allTagsOnPage);
   document.body.classList.remove('grayscaleFilterFull');
   document.body.classList.add('WhiteAndBlack');
 };
+
 
 WhiteAndBlack.addEventListener("click",function(evt) {
     evt.preventDefault();
@@ -1127,6 +1080,17 @@ DisableImages.addEventListener("click",function(evt) {
   ChangeStatusImageToDisableImages();
 });
 
+  var loadOnOpenPage = function () {
+  LoadFont();
+  LoadFontFamily();
+  LoadLetter();
+  LoadLine();
+  LoadColorScheme();
+  LoadStatusImages();
+  return true;
+};
+
+
   function reset() {
     ClearLocalStorage()
     document.body.style.cssText='';
@@ -1142,11 +1106,11 @@ DisableImages.addEventListener("click",function(evt) {
     // ShowImage();
     // FontsDefault();
     FontsFamilyDefault();
-    ChangeColorShemeToBlackAndWhite();
+     ChangeColorShemeToBlackAndWhite();
     LineHeightDefault();
     // RemoveFixedPositionForPanel();
     // console.log('reset complite');
-    // localStorage["PanelStatusOpened"]=1;
+    // localStorage["PanelStatusOpened"]=0;
   };
 
   var ButtonReset=document.querySelector(".reset");
@@ -1162,22 +1126,36 @@ DisableImages.addEventListener("click",function(evt) {
     }
   }
 
-  function startInit() {
-    // forInsert.classList.add('hide');
-    // forInsert.classList.remove('hide');
-    console.log('init eyes')
-    // glaz.addEventListener('click',openPanel )
-    // forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel'); //test
-    // AddFixedPositionForPanel();
-    // FullLoad(localStorage["PanelStatusOpened"]);
-    // OpenPanel();
-    initPanel();
+  var initGoogleTag = function () {
+    var googleFrameNoScript = document.createElement('noscript');
+    var googleFrame = document.createElement('iframe');
+    googleFrame.src="https://www.googletagmanager.com/ns.html?id=GTM-PLK39QDC";
+    googleFrame.height="0";
+    googleFrame.width="0";
+    googleFrame.style.display="none;"
+    googleFrame.style.visibility="hidden;"
+
+    googleFrameNoScript.appenChild(googleFrame);
+    document.body.appenChild(googleFrame);
   }
+
+
+
+  function startInit() {
+        // forInsert.classList.add('hide');
+        // forInsert.classList.remove('hide');
+        console.log('init eyes')
+        // glaz.addEventListener('click',openPanel )
+        // forInsert.querySelector('.low-eyes-panel').classList.toggle('open-panel'); //test
+        // AddFixedPositionForPanel();
+        FullLoad(localStorage["PanelStatusOpened"]);
+        // OpenPanel();
+        initPanel();
+        initGoogleTag();
+      }
   document.addEventListener('DOMContentLoaded', startInit);
   document.addEventListener('DOMContentLoaded', loadOnOpenPage);
   document.addEventListener('load', loadOnOpenPage);
 
 
   </script>
-</body>
-</html>
